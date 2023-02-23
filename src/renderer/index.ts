@@ -1,5 +1,5 @@
 console.log("Hff");
 
 setInterval(()=> {
-    console.log("Interval testssuhsdfuhfsd");
+    console.log("iosdhfds");
 },1000);
