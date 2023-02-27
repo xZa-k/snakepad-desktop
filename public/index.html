@@ -3,15 +3,18 @@
     <head>
         <title>Snakepad</title>
         <script src="../dist/renderer/index.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+        <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
         
     </head>
 
     <body>
         <h1>Snakepad</h1>
         <p>Letssss Go!</p>
-        <textarea></textarea>
+        <textarea id="textBox"> </textarea>
+
         <script>
-        var simplemde = new SimpleMDE({ element: document.getElementById("MyID") });
+            var simplemde = new SimpleMDE({ element: document.getElementById("textBox") });
         </script>
     </body>
 </html>
