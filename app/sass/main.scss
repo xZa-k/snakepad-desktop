@@ -3,7 +3,7 @@ $font-stack: 'Poppins', sans-serif;
 $primary-color: #1f2421;
 
 .nav{
-    font: 100% $font-stack;
+    font: 100% $font-stack $primary-color;
     width: 100%;
     padding: 10px;
     box-shadow: 1px 1px 15px;
