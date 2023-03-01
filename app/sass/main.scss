@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+$font-stack: 'Poppins', sans-serif;
+$primary-color: #1f2421;
+
+.nav{
+    font: 100% $font-stack;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 1px 1px 15px;
+}
+
