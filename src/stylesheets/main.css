@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.nav {
+  font: 100% "Poppins", sans-serif;
+  width: 100%;
+  padding: 10px;
+  box-shadow: 1px 1px 15px;
+}
+
+/*# sourceMappingURL=main.css.map */
