@@ -1,23 +1,15 @@
 {
   "name": "snakepad-desktop",
   "version": "1.0.0",
-  "description": "Note taking app",
-  "main": "./dist/main/main.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "start": "concurrently \"tsc -w\" \"electron . \""
+    "prepare": "cd client && npm i && cd ../server && npm i",
+    "start": "concurrently \"cd client && npm start\" \"cd server && npm start\""
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/electron": "^1.6.10",
-    "concurrently": "^7.6.0",
-    "electron": "^23.1.1",
-    "electron-debug": "^3.2.0",
-    "electron-reloader": "^1.2.3",
-    "nodemon": "^2.0.20",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
+    "concurrently": "^7.6.0"
   }
 }

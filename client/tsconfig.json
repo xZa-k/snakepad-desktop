@@ -12,8 +12,6 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "allowJs": true,
-    "outDir":"./dist",
-    "rootDir":"./src"
   },
   "exclude": ["dist/"]
 }
