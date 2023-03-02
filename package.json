@@ -1,0 +1,15 @@
+{
+  "name": "snakepad-desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "cd client && npm i && cd ../server && npm i",
+    "start": "concurrently \"cd client && npm start\" \"cd server && npm start\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
