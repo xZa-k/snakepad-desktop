@@ -8,4 +8,4 @@
 - Benjamin Kile - https://github.com/BenjaminKile
 - Manoj Chandar - https://github.com/ManojC0
 - Stuart Dann - https://github.com/Stuart-Dann
-- Zack Body - https://github.com/xZa-k
+- Zak Body - https://github.com/xZa-k
