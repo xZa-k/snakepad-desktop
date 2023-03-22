@@ -1,5 +1,9 @@
-import "./main.scss"
+import "./main.scss";
+import SimpleMDE from 'simplemde/dist/simplemde.min';
+import "../node_modules/simplemde/src/css/simplemde.css";
 
 setInterval(() => {
     console.log("hello");
 }, 1000);
+
+var simplemde = new SimpleMDE({ element: document.getElementById("test") });
