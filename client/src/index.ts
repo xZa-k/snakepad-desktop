@@ -1,6 +1,6 @@
 import "./main.scss";
 import SimpleMDE from 'simplemde/dist/simplemde.min';
-import "../node_modules/simplemde/src/css/simplemde.css";
+import "../node_modules/simplemde/dist/simplemde.min.css";
 
 setInterval(() => {
     console.log("hello");
