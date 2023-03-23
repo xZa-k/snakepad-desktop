@@ -1,4 +1,30 @@
 $body-color: red;
+$menu-color: #DCE1DE;
+$text-color: #DCE1DE;
+$font-stack: 'Poppins', sans-serif;
+
 
 body {
+    .sidebar {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        top: 8em;
+        border-radius: 0px 130px 0px 0px;
+        left: 0;
+        padding-top: 200px;
+        background-color: $menu-color;
+        font-family: $font-stack;
+        }
+        
+        .sidebar div {
+        padding: 8px;
+        font-size: 24px;
+        display: block;
+        font-size: 18px;
+        }
+
+    font-family: $font-stack;
+    margin-left: 260px;
+
 }
