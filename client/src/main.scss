@@ -5,7 +5,19 @@ $font-stack: 'Poppins', sans-serif;
 
 
 body {
-    .sidebar {
+    /*
+    .outer-sidebar {
+        height: 100%;
+        width: 80px;
+        position: fixed;
+        z-index: 9;
+        top:8em;
+        padding-top: 200px;
+        background-color: red;
+
+    }
+    */
+    .inner-sidebar {
         height: 100%;
         width: 250px;
         position: fixed;
@@ -17,7 +29,7 @@ body {
         font-family: $font-stack;
         }
         
-        .sidebar div {
+        .inner-sidebar div {
         padding: 8px;
         font-size: 24px;
         display: block;
