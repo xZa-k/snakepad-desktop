@@ -1,7 +1,7 @@
 import "./main.scss"
 import SimpleMDE from "simplemde/dist/simplemde.min"
 import "../node_modules/simplemde/dist/simplemde.min.css"
-import "./ben"
+import "./MarkDownEditor"
 
 setInterval(() => {
 	console.log("hello")
