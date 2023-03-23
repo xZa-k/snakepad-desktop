@@ -7,6 +7,12 @@
     <body>
         <h1>Snakepad</h1>
         <p>Letssss Go!</p>
-        <textarea id="test"></textarea>
+        <div id="editorContainer">
+            <div id="result"></div>
+            <textarea id="textBox" style="display: block;" onmouseout="getCaret()"></textarea>
+        </div>
+        <!-- OnClick is not supported so change to event listener-->
+        <button id="preview" onclick="parseMarked()">Preview</button>
+        <button id="Bold" onclick="bold()">Bold</button>
     </body>
 </html>
