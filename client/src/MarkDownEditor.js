@@ -1,39 +1,44 @@
-const { marked } = require("marked")
+const { marked } = require("marked");
 
-let toggle = false
+let toggle = false;
+let posCaretStart = 0;
+let posCaretEnd = 0;
 
 function parseMarked() {
-	toggle = !toggle
-	console.log(toggle)
+	toggle = !toggle;
+	console.log(toggle);
 	if (toggle) {
 		// Parse text into markdow
-		let textBox = document.getElementById("textBox")
-		let rawText = textBox.value
-		let markdown = marked.parse(rawText)
+		let textBox = document.getElementById("textBox");
+		let rawText = textBox.value;
+		let markdown = marked.parse(rawText);
 
-		let result = document.getElementById("result")
-		result.innerHTML = markdown
-		textBox.style.display = "none"
+		let result = document.getElementById("result");
+		result.innerHTML = markdown;
+		textBox.style.display = "none";
 	} else {
-		textBox.style.display = "block"
-		result.innerHTML = null
+		textBox.style.display = "block";
+		result.innerHTML = null;
 	}
 }
 
 function getCaret() {
-	let posCaretStart = document.getElementById("textBox").selectionStart
-	let posCaretEnd = document.getElementById("textBox").selectionEnd
-	console.log(posCaretStart, posCaretEnd)
-	return posCaretEnd, posCaretStart
+	posCaretStart = document.getElementById("textBox").selectionStart;
+	posCaretEnd = document.getElementById("textBox").selectionEnd;
+	console.log(posCaretStart, posCaretEnd);
+	return posCaretEnd, posCaretStart;
 }
 
 function bold() {
-	// Add ** to the start and end of word in the array called arra
-	let textBox = document.getElementById("textBox")
-	let arra = textBox.value.split("")
-	console.log(arra)
+	let textBox = document.getElementById("textBox");
+	let startString = textBox.value.substr(0, posCaretStart);
+	let endString = textBox.value.substring(posCaretEnd);
+	let substring = textBox.value.substring(posCaretStart, posCaretEnd);
+	textBox.value = startString + "**" + substring + "**" + endString;
+	console.log(substring);
+	console.log(textBox.setSelectionRange(posCaretStart, posCaretEnd));
 }
 
-window.parseMarked = parseMarked
-window.getCaret = getCaret
-window.bold = bold
+window.parseMarked = parseMarked;
+window.getCaret = getCaret;
+window.bold = bold;
