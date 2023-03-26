@@ -7,15 +7,16 @@
     <body>
         <h1>Snakepad</h1>
         <p>Letssss Go!</p>
-        <div id="editorContainer">
-            <div id="result"></div>
-            <textarea id="textBox" style="display: block;" onmouseout="getCaret()"></textarea>
-        </div>
-        <!-- OnClick is not supported so change to event listener-->
-        <button id="preview" onclick="parseMarked()">Preview</button>
-        <button id="Bold" onclick="bold()">Bold</button>
-        <button id="italics" onclick="italics()">Italics</button>
-        <button id="link" onclick="link()">Link</button>
-        <button id="heading-1" onclick="heading_1()">Heading 1</button>
+
+        <markdown-editor toggle="false"></markdown-editor>
+
+        
+        <template id="buttons_template">
+            <button id="preview">Preview</button>
+            <button id="bold">Bold</button>
+            <button id="italics">Italics</button>
+            <button id="link" >Link</button>
+            <button id="heading-1">Heading 1</button>
+        </template>
     </body>
 </html>
