@@ -11,7 +11,15 @@ textarea{
     display: block;
 }
 
-button{
+#buttons{
     margin-left: 4.5rem;
     margin-top: 1rem;
+}
+
+option{
+    text-align: center;
+}
+
+#option0{
+    color: rgb(88, 88, 88);
 }
