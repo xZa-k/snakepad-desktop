@@ -35,13 +35,13 @@ function bold() {
 	let startString = textBox.value.substr(0, posCaretStart);
 	let endString = textBox.value.substring(posCaretEnd);
 	let substring = textBox.value.substring(posCaretStart, posCaretEnd);
-	textBox.value = `${startString} **${substring}** ${endString}`;
+	textBox.value = `${startString}**${substring}**${endString}`;
 }
 function italics() {
 	let startString = textBox.value.substr(0, posCaretStart);
 	let endString = textBox.value.substring(posCaretEnd);
 	let substring = textBox.value.substring(posCaretStart, posCaretEnd);
-	textBox.value = `${startString} *${substring}* ${endString}`;
+	textBox.value = `${startString}*${substring}*${endString}`;
 }
 
 // for links between notes
@@ -49,7 +49,7 @@ function link() {
 	let startString = textBox.value.substr(0, posCaretStart);
 	let endString = textBox.value.substring(posCaretEnd);
 	let substring = textBox.value.substring(posCaretStart, posCaretEnd);
-	textBox.value = `${startString} [${substring}](Insert-Link-Here) ${endString}`;
+	textBox.value = `${startString}[${substring}](Insert-Link-Here)${endString}`;
 }
 function heading(event) {
 	let id = event[event.selectedIndex].id;
@@ -57,7 +57,7 @@ function heading(event) {
 	let endString = textBox.value.substring(posCaretEnd);
 	let substring = textBox.value.substring(posCaretStart, posCaretEnd);
 	console.log(id);
-	textBox.value = `${startString} \n${"#".repeat(id)} ${substring} \n${endString}`;
+	textBox.value = `${startString}\n${"#".repeat(id)} ${substring} \n${endString}`;
 }
 
 function unList() {
@@ -65,10 +65,10 @@ function unList() {
 	let endString = textBox.value.substring(posCaretEnd);
 	let substring = textBox.value.substring(posCaretStart, posCaretEnd);
 
-	const lines = substring.split("\n");
+	let lines = substring.split("\n");
 	let newLines = [];
 	for (let i = 0; i < lines.length; i++) {
-		if (i >= posCaretStart && i <= posCaretEnd) {
+		if (i >= 0 && i <= posCaretEnd - posCaretStart) {
 			newLines.push("- " + lines[i]);
 		} else {
 			newLines.push(lines[i]);
@@ -83,10 +83,10 @@ function orList() {
 	let endString = textBox.value.substring(posCaretEnd);
 	let substring = textBox.value.substring(posCaretStart, posCaretEnd);
 
-	const lines = substring.split("\n");
+	let lines = substring.split("\n");
 	let newLines = [];
 	for (let i = 0; i < lines.length; i++) {
-		if (i >= posCaretStart && i <= posCaretEnd) {
+		if (i >= 0 && i <= posCaretEnd - posCaretStart) {
 			newLines.push(`${i + 1}. ` + lines[i]);
 		} else {
 			newLines.push(lines[i]);
