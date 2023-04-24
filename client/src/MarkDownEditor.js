@@ -32,21 +32,16 @@ function getCaret() {
 }
 
 function bold() {
-	let textBox = document.getElementById("textBox");
 	let startString = textBox.value.substr(0, posCaretStart);
 	let endString = textBox.value.substring(posCaretEnd);
 	let substring = textBox.value.substring(posCaretStart, posCaretEnd);
 	textBox.value = `${startString} **${substring}** ${endString}`;
-	console.log(substring);
-	console.log(textBox.setSelectionRange(posCaretStart, posCaretEnd));
 }
 function italics() {
 	let startString = textBox.value.substr(0, posCaretStart);
 	let endString = textBox.value.substring(posCaretEnd);
 	let substring = textBox.value.substring(posCaretStart, posCaretEnd);
 	textBox.value = `${startString} *${substring}* ${endString}`;
-	console.log(substring);
-	console.log(textBox.setSelectionRange(posCaretStart, posCaretEnd));
 }
 
 // for links between notes
@@ -55,8 +50,6 @@ function link() {
 	let endString = textBox.value.substring(posCaretEnd);
 	let substring = textBox.value.substring(posCaretStart, posCaretEnd);
 	textBox.value = `${startString} [${substring}](Insert-Link-Here) ${endString}`;
-	console.log(substring);
-	console.log(textBox.setSelectionRange(posCaretStart, posCaretEnd));
 }
 function heading(event) {
 	let id = event[event.selectedIndex].id;
@@ -65,8 +58,6 @@ function heading(event) {
 	let substring = textBox.value.substring(posCaretStart, posCaretEnd);
 	console.log(id);
 	textBox.value = `${startString} \n${"#".repeat(id)} ${substring} \n${endString}`;
-	console.log(substring);
-	console.log(textBox.setSelectionRange(posCaretStart, posCaretEnd));
 }
 
 function unList() {
