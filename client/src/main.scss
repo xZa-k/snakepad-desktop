@@ -2,3 +2,24 @@ $body-color: red;
 
 body {
 }
+
+textarea{
+    width: 90%;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#buttons{
+    margin-left: 4.5rem;
+    margin-top: 1rem;
+}
+
+option{
+    text-align: center;
+}
+
+#option0{
+    color: rgb(88, 88, 88);
+}
