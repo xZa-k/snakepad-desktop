@@ -1,0 +1,9 @@
+{
+    "$schema": "https://deno.land/x/denon/schema.json",
+    "imports": {
+        "express": "npm:express"
+    },
+    "tasks":{
+        "start": "deno run -A --watch ./src/main.ts"
+    }
+}
