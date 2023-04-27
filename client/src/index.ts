@@ -4,8 +4,4 @@ import "../node_modules/simplemde/dist/simplemde.min.css"
 import "./MarkDownEditor"
 import "./compontents/MarkDownEditor"
 
-setInterval(() => {
-	console.log("hello")
-}, 1000)
-
 // var simplemde = new SimpleMDE({ element: document.getElementById("test") });
