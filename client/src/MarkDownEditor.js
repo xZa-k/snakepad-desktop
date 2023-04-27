@@ -97,6 +97,10 @@ function orList() {
 }
 //function toggle()
 
+export function getText() {
+	return textBox.value;
+}
+
 window.parseMarked = parseMarked;
 window.getCaret = getCaret;
 window.bold = bold;
