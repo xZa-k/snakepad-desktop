@@ -8,6 +8,8 @@ export class MarkDownEditor extends HTMLElement {
 	output: HTMLDivElement;
 	toggle: boolean;
 	buttons: DocumentFragment;
+	posCaretStart: number;
+	posCaretEnd: number;
 
 	constructor() {
 		super();
@@ -30,7 +32,10 @@ export class MarkDownEditor extends HTMLElement {
 		let children = this.buttons.children;
 
 		for (let button of children) {
-			button.addEventListener("click", () => this.preview());
+			button.addEventListener("click", (e) => {
+				e.preventDefault();
+				this[button.id]();
+			});
 		}
 	}
 
@@ -70,6 +75,51 @@ export class MarkDownEditor extends HTMLElement {
 			this.textarea.style.display = "block";
 			this.output.innerHTML = null;
 		}
+	}
+
+	updateCaret() {
+		this.posCaretStart = this.textarea.selectionStart;
+		this.posCaretEnd = this.textarea.selectionEnd;
+	}
+
+	bold() {
+		let textContent = this.textarea.value;
+		this.updateCaret();
+
+		let startString = textContent.substr(0, this.posCaretStart);
+		let endString = textContent.substring(this.posCaretEnd);
+		let substring = textContent.substring(this.posCaretStart, this.posCaretEnd);
+		this.textarea.value = `${startString}**${substring}**${endString}`;
+	}
+
+	italics() {
+		let textContent = this.textarea.value;
+		this.updateCaret();
+
+		let startString = textContent.substr(0, this.posCaretStart);
+		let endString = textContent.substring(this.posCaretEnd);
+		let substring = textContent.substring(this.posCaretStart, this.posCaretEnd);
+		this.textarea.value = `${startString}*${substring}*${endString}`;
+	}
+
+	link() {
+		let textContent = this.textarea.value;
+		this.updateCaret();
+
+		let startString = textContent.substr(0, this.posCaretStart);
+		let endString = textContent.substring(this.posCaretEnd);
+		let substring = textContent.substring(this.posCaretStart, this.posCaretEnd);
+		this.textarea.value = `${startString}[${substring}](Insert-Link-Here)${endString}`;
+	}
+
+	heading1(){
+		let textContent = this.textarea.value;
+		this.updateCaret();
+
+		let startString = textContent.substr(0, this.posCaretStart);
+		let endString = textContent.substring(this.posCaretEnd);
+		let substring = textContent.substring(this.posCaretStart, this.posCaretEnd);
+		this.textarea.value = `${startString}\n${"#"} ${substring} \n${endString}`;
 	}
 }
 
