@@ -1,10 +1,9 @@
-import "./main.scss"
-import SimpleMDE from "simplemde/dist/simplemde.min"
-import "../node_modules/simplemde/dist/simplemde.min.css"
-import "./MarkDownEditor"
-import { getText } from "./MarkDownEditor"
-import "./notes";
-import { Note, Workspace } from "./notes"
+import "./main.scss";
+import SimpleMDE from "simplemde/dist/simplemde.min";
+import "../node_modules/simplemde/dist/simplemde.min.css";
+// import "./MarkDownEditor"
+import "./components/MarkDownEditor";
+import { Note, Workspace } from "notes";
 
 let workspace: Workspace;
 
