@@ -1,9 +1,9 @@
 
 
 export class Note {
-    public text: String;
+    public text: string;
 
-    constructor (text: String) {
+    constructor (text: string) {
         this.text = text;
     }
 }
