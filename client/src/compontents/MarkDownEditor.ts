@@ -30,12 +30,18 @@ export class MarkDownEditor extends HTMLElement {
 		this.buttons = template.content.cloneNode(true) as DocumentFragment;
 
 		let children = this.buttons.children;
-
-		for (let button of children) {
-			button.addEventListener("click", (e) => {
-				e.preventDefault();
-				this[button.id]();
-			});
+		for (let elem of children) {
+			if (elem.tagName == "BUTTON") {
+				elem.addEventListener("click", (e) => {
+					e.preventDefault();
+					this[elem.id]();
+				});
+			} else {
+				console.log(elem.firstElementChild);
+				elem.firstElementChild.addEventListener("change", (e) => {
+					this.heading(elem.firstElementChild);
+				});
+			}
 		}
 	}
 
@@ -86,7 +92,7 @@ export class MarkDownEditor extends HTMLElement {
 		let textContent = this.textarea.value;
 		this.updateCaret();
 
-		let startString = textContent.substr(0, this.posCaretStart);
+		let startString = textContent.substring(0, this.posCaretStart);
 		let endString = textContent.substring(this.posCaretEnd);
 		let substring = textContent.substring(this.posCaretStart, this.posCaretEnd);
 		this.textarea.value = `${startString}**${substring}**${endString}`;
@@ -96,7 +102,7 @@ export class MarkDownEditor extends HTMLElement {
 		let textContent = this.textarea.value;
 		this.updateCaret();
 
-		let startString = textContent.substr(0, this.posCaretStart);
+		let startString = textContent.substring(0, this.posCaretStart);
 		let endString = textContent.substring(this.posCaretEnd);
 		let substring = textContent.substring(this.posCaretStart, this.posCaretEnd);
 		this.textarea.value = `${startString}*${substring}*${endString}`;
@@ -106,21 +112,65 @@ export class MarkDownEditor extends HTMLElement {
 		let textContent = this.textarea.value;
 		this.updateCaret();
 
-		let startString = textContent.substr(0, this.posCaretStart);
+		let startString = textContent.substring(0, this.posCaretStart);
 		let endString = textContent.substring(this.posCaretEnd);
 		let substring = textContent.substring(this.posCaretStart, this.posCaretEnd);
 		this.textarea.value = `${startString}[${substring}](Insert-Link-Here)${endString}`;
 	}
 
-	heading1(){
+	heading(elem) {
+		let textContent = this.textarea.value;
+		this.updateCaret();
+		let id = elem[elem.selectedIndex].id;
+		console.log(elem);
+
+		let startString = textContent.substring(0, this.posCaretStart);
+		let endString = textContent.substring(this.posCaretEnd);
+		let substring = textContent.substring(this.posCaretStart, this.posCaretEnd);
+		console.log(id);
+		this.textarea.value = `${startString}\n${"#".repeat(id)} ${substring} \n${endString}`;
+	}
+
+	unList() {
 		let textContent = this.textarea.value;
 		this.updateCaret();
 
-		let startString = textContent.substr(0, this.posCaretStart);
+		let startString = textContent.substring(0, this.posCaretStart);
 		let endString = textContent.substring(this.posCaretEnd);
 		let substring = textContent.substring(this.posCaretStart, this.posCaretEnd);
-		this.textarea.value = `${startString}\n${"#"} ${substring} \n${endString}`;
+
+		let lines = substring.split("\n");
+		let newLines = [];
+		for (let i = 0; i < lines.length; i++) {
+			if (i >= 0 && i <= this.posCaretEnd - this.posCaretStart) {
+				newLines.push("- " + lines[i]);
+			} else {
+				newLines.push(lines[i]);
+			}
+		}
+		substring = newLines.join("\n");
+		this.textarea.value = `${startString}${substring}${endString}`;
+	}
+
+	orList() {
+		let textContent = this.textarea.value;
+		this.updateCaret();
+
+		let startString = textContent.substring(0, this.posCaretStart);
+		let endString = textContent.substring(this.posCaretEnd);
+		let substring = textContent.substring(this.posCaretStart, this.posCaretEnd);
+
+		let lines = substring.split("\n");
+		let newLines = [];
+		for (let i = 0; i < lines.length; i++) {
+			if (i >= 0 && i <= this.posCaretEnd - this.posCaretStart) {
+				newLines.push(`${i + 1}. ` + lines[i]);
+			} else {
+				newLines.push(lines[i]);
+			}
+		}
+		substring = newLines.join("\n");
+		this.textarea.value = `${startString}${substring}${endString}`;
 	}
 }
-
 customElements.define("markdown-editor", MarkDownEditor);
