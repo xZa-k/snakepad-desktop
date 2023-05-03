@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Snakepad</title>
-    </head>
 
-    <body>
-        <h1>Snakepad</h1>
-        <p>Letssss Go!</p>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../src/main.scss">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <title>Snakepad</title>
+</head>
+
+<body>
+    <header>
         <div id="editorContainer">
-            <button id="preview" onclick="parseMarked()">Preview</button>
+
+            <img src="img/profile.png" alt="Profile Picture"    width= '50px'
+            height= '50px'>
+          <!--   <button id="preview" onclick="parseMarked()">Preview</button> 
             <div id="result"></div>
-            <div style='display: block'id="editor">
+            <div style='display: block' id="editor">-->
                 <div id="buttons">
                     <button id="Bold" onclick="bold()">Bold</button>
                     <button id="italics" onclick="italics()">Italics</button>
@@ -19,17 +27,24 @@
                     <button id="orList" onclick="orList()">Number List</button>
                     <button id="toggleList"></button>
                     <form style="display: inline;">
-                        <select id ="myList" onchange="heading(this)">
+                        <select id="myList" onchange="heading(this)">
                             <option selected="selected" id="option0"> -- Headers -- </option>
                             <option id="1"> Heading 1</option>
-                            <option id="2"> Heading 2</option> 
-                            <option id="3"> Heading 3</option> 
-                    </select>
+                            <option id="2"> Heading 2</option>
+                            <option id="3"> Heading 3</option>
+                        </select>
 
                     </form>
-                <textarea id="textBox" style="display: block;" onmouseout="getCaret()"></textarea>
-            </div>
-        </div>
-        <!-- OnClick is not supported so change to event listener-->
-    </body>
+                    </div>
+
+                    <h2>Title of document.</h2>
+
+              <!---   </div>
+            </div>  --->
+
+    </header>   
+        <textarea id="textBox"onmouseout="getCaret()"></textarea>
+    <!-- OnClick is not supported so change to event listener-->
+</body>
+
 </html>
