@@ -46,7 +46,7 @@ export class MarkDownEditor extends HTMLElement {
 				});
 			} else if (elem.tagName == "INPUT") {
 				elem.addEventListener("keydown", (event: KeyboardEvent) => {
-					this.updateInputSize();
+					this.updateInputSize(elem);
 					if (event.key == "Enter") {
 						console.log(elem.id);
 						this[elem.id](elem);
@@ -200,11 +200,10 @@ export class MarkDownEditor extends HTMLElement {
 		root.style.setProperty("--fontSize", numInput + "px");
 	}
 
-	updateInputSize() {
+	updateInputSize(elem) {
 		const root = document.documentElement;
-		const inputField = this.input.value;
 
-		root.style.setProperty("--inputSize", inputField.length + "ch");
+		root.style.setProperty("--inputSize", elem.value.length + 1 + "ch");
 	}
 }
 customElements.define("markdown-editor", MarkDownEditor);
