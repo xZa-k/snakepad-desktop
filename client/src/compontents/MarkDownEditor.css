@@ -21,6 +21,7 @@ textarea {
 
 input{
     width: var(--inputSize);
+    max-width: 3ch;
     text-align: center;
 
 }
