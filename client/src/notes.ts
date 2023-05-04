@@ -1,11 +1,14 @@
+import { FileExplorer } from "./components/FileExplorer";
 import { MarkDownEditor } from "./components/MarkDownEditor";
 
 
 export class Note {
     public text: string;
+    public id: number;
 
     constructor (text: string) {
         this.text = text;
+        this.id = Math.floor(Math.random() * 100000);
     }
 }
 
@@ -21,6 +24,7 @@ export class WorkspaceData {
 export class Workspace{
     public textEditor: MarkDownEditor;
     public data: WorkspaceData;
+    public fileExplorer: FileExplorer;
 
 
     constructor (parent: HTMLElement) {
@@ -30,18 +34,23 @@ export class Workspace{
         this.textEditor = new MarkDownEditor();
         this.textEditor.addEventListener("input", (e) => this.inputHandler(e, this));
 
-        this.data.notes = [new Note("")];
+        this.notes = [new Note("")];
 
         // Will overwrite data.notes if stuff is saved, else keep the empty note
         this.loadWorkspace();
 
-        parent.appendChild(this.textEditor);        
+        this.fileExplorer = new FileExplorer();
+        this.fileExplorer.setAttribute("data", JSON.stringify(this.data));
+
+        parent.appendChild(this.fileExplorer);
+        parent.appendChild(this.textEditor);
     }
 
     inputHandler(e: Event, workspace: Workspace) {
         e.preventDefault();
         workspace.notes[0].text = workspace.textEditor.textarea.value;
         localStorage.setItem("workspace", JSON.stringify(workspace.data));
+        this.fileExplorer.setAttribute("data", JSON.stringify(this.data));
     }
 
     loadWorkspace() {
