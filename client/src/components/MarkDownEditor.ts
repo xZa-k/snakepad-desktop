@@ -14,6 +14,7 @@ export class MarkDownEditor extends HTMLElement {
 	constructor() {
 		super();
 		this.toggle = false;
+		this.setAttribute("toggle", "false");
 
 		this.container = document.createElement("div");
 		this.container.id = "container";
@@ -56,8 +57,7 @@ export class MarkDownEditor extends HTMLElement {
 	}
 
 	attributeChangedCallback(name, oldValue: string, newValue: string) {
-		if (name == "toggle") {
-			console.log("AYO");
+		if (name == "toggle" && this.isConnected) {
 			this.toggle = !(newValue == "true");
 			this.preview();
 		}
