@@ -50,8 +50,6 @@ export class Workspace{
             let workspaceData = JSON.parse(workspaceString) as WorkspaceData;
             this.data = workspaceData;
             this.textEditor.textarea.value = this.data.notes[0].text;
-        } else {
-
         }
     }
 
