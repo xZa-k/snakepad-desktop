@@ -7,29 +7,25 @@
     <body>
         <h1>Snakepad</h1>
         <p>Letssss Go!</p>
-        <div id="editorContainer">
-            <button id="preview" onclick="parseMarked()">Preview</button>
-            <div id="result"></div>
-            <div style='display: block'id="editor">
-                <div id="buttons">
-                    <button id="Bold" onclick="bold()">Bold</button>
-                    <button id="italics" onclick="italics()">Italics</button>
-                    <button id="link" onclick="link()">Link</button>
-                    <button id="unList" onclick="unList()">Bullet Point</button>
-                    <button id="orList" onclick="orList()">Number List</button>
-                    <button id="toggleList"></button>
-                    <form style="display: inline;">
-                        <select id ="myList" onchange="heading(this)">
-                            <option selected="selected" id="option0"> -- Headers -- </option>
-                            <option id="1"> Heading 1</option>
-                            <option id="2"> Heading 2</option> 
-                            <option id="3"> Heading 3</option> 
-                    </select>
 
-                    </form>
-                <textarea id="textBox" style="display: block;" onmouseout="getCaret()"></textarea>
-            </div>
-        </div>
-        <!-- OnClick is not supported so change to event listener-->
+        <template id="buttons_template">
+            <button id="preview">Preview</button>
+            <button id="bold">Bold</button>
+            <button id="italics">Italics</button>
+            <button id="link" >Link</button>
+            <button id="unList">Bullet Points</button>
+            <button id="orList">Numbered List</button>
+            <form style="display: inline;">
+                <select id ="headers">
+                    <option selected="selected" id="option0"> -- Headers -- </option>
+                    <option id="1"> Heading 1</option>
+                    <option id="2"> Heading 2</option> 
+                    <option id="3"> Heading 3</option> 
+                </select>
+            </form>
+        </template>
+
+        <markdown-editor toggle="false"></markdown-editor>
+
     </body>
 </html>
