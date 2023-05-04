@@ -1,6 +1,7 @@
 :root{
     --font: 'Arial';
     --fontSize: 16px;
+    --inputSize: 2ch;
 }
 
 textarea {
@@ -19,8 +20,9 @@ textarea {
 }
 
 input{
-    width: 20px;
+    width: var(--inputSize);
     text-align: center;
+
 }
 
 button {

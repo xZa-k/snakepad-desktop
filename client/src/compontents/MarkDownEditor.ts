@@ -4,6 +4,7 @@ import myStyle from "./MarkDownEditor.css";
 
 export class MarkDownEditor extends HTMLElement {
 	textarea: HTMLTextAreaElement;
+	input: HTMLInputElement;
 	container: HTMLDivElement;
 	output: HTMLDivElement;
 	toggle: boolean;
@@ -45,6 +46,7 @@ export class MarkDownEditor extends HTMLElement {
 				});
 			} else if (elem.tagName == "INPUT") {
 				elem.addEventListener("keydown", (event: KeyboardEvent) => {
+					this.updateInputSize();
 					if (event.key == "Enter") {
 						console.log(elem.id);
 						this[elem.id](elem);
@@ -196,6 +198,13 @@ export class MarkDownEditor extends HTMLElement {
 		const numInput = Number(elem.value);
 
 		root.style.setProperty("--fontSize", numInput + "px");
+	}
+
+	updateInputSize() {
+		const root = document.documentElement;
+		const inputField = this.input.value;
+
+		root.style.setProperty("--inputSize", inputField.length + "ch");
 	}
 }
 customElements.define("markdown-editor", MarkDownEditor);
