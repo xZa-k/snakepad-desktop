@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Snakepad</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine|Inconsolata|Droid+Sans">
     </head>
 
     <body>
@@ -16,11 +17,20 @@
             <button id="unList">Bullet Points</button>
             <button id="orList">Numbered List</button>
             <form style="display: inline;">
-                <select id ="headers">
+                <select id ="heading">
                     <option selected="selected" id="option0"> -- Headers -- </option>
                     <option id="1"> Heading 1</option>
                     <option id="2"> Heading 2</option> 
                     <option id="3"> Heading 3</option> 
+                </select>
+            </form>
+            <input type="text" id="setFontSize" value="16">
+            <form style="display: inline;">
+                <select id ="setFont">
+                    <option selected="selected" id="Arial">Arial</option>
+                    <option id="Tangerine">Tangerine</option>
+                    <option id="Inconsolata">Inconsolata</option> 
+                    <option id="Droid">Droid</option> 
                 </select>
             </form>
         </template>

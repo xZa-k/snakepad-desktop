@@ -1,9 +1,26 @@
+:root{
+    --font: 'Arial';
+    --fontSize: 16px;
+}
+
 textarea {
     width: 90%;
     height: 200px;
     margin-left: auto;
     margin-right: auto;
     display: block;
+    font-family: var(--font);
+    font-size: var(--fontSize);
+}
+
+#output{
+    font-family: var(--font);
+    font-size: var(--fontSize);
+}
+
+input{
+    width: 20px;
+    text-align: center;
 }
 
 button {

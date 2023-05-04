@@ -20,9 +20,10 @@ export class MarkDownEditor extends HTMLElement {
 
 		this.textarea = document.createElement("textarea");
 		this.container.append(this.textarea);
+		this.textarea.className = "Editor";
 
 		this.output = document.createElement("div");
-		this.output.id = "preview";
+		this.output.id = "output";
 		this.container.append(this.output);
 
 		let template = document.querySelector("#buttons_template") as HTMLTemplateElement;
@@ -36,10 +37,18 @@ export class MarkDownEditor extends HTMLElement {
 					e.preventDefault();
 					this[elem.id]();
 				});
-			} else {
+			} else if (elem.tagName == "FORM") {
 				console.log(elem.firstElementChild);
 				elem.firstElementChild.addEventListener("change", (e) => {
-					this.heading(elem.firstElementChild);
+					e.preventDefault();
+					this[elem.firstElementChild.id](elem.firstElementChild);
+				});
+			} else if (elem.tagName == "INPUT") {
+				elem.addEventListener("keydown", (event: KeyboardEvent) => {
+					if (event.key == "Enter") {
+						console.log(elem.id);
+						this[elem.id](elem);
+					}
 				});
 			}
 		}
@@ -171,6 +180,22 @@ export class MarkDownEditor extends HTMLElement {
 		}
 		substring = newLines.join("\n");
 		this.textarea.value = `${startString}${substring}${endString}`;
+	}
+
+	setFont(elem) {
+		let root = document.documentElement;
+		let id = elem[elem.selectedIndex].id;
+
+		console.log(id);
+		root.style.setProperty("--font", id);
+	}
+
+	setFontSize(elem) {
+		let root = document.documentElement;
+		console.log(elem);
+		const numInput = Number(elem.value);
+
+		root.style.setProperty("--fontSize", numInput + "px");
 	}
 }
 customElements.define("markdown-editor", MarkDownEditor);
