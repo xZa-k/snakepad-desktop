@@ -9,7 +9,8 @@ import { Note, Workspace } from "./notes";
 let workspace: Workspace;
 workspace = new Workspace(document.body);
 
-workspace.data.notes.push(new Note("You will never find me."));
+if (workspace.notes.length < 2)
+    workspace.data.notes.push(new Note("You will never find me."));
 
 
 // if (localStorage.getItem("workspace")) {

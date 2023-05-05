@@ -2,12 +2,14 @@ import { marked } from "marked";
 // @ts-ignore
 import myStyle from "./MarkDownEditor.css";
 import { WorkspaceData } from "../notes";
+import { MarkDownEditor } from "./MarkDownEditor";
 
 export class FileExplorer extends HTMLElement {
 
     workspaceData: WorkspaceData;
     container: HTMLDivElement;
     fileList: HTMLUListElement;
+    // buttonCallback: (this: HTMLLIElement, noteid: string) => any;
 
 
 	constructor() {
@@ -33,7 +35,6 @@ export class FileExplorer extends HTMLElement {
 	attributeChangedCallback(name, oldValue: string, newValue: string) {
         if (name == "data") {
             this.workspaceData = JSON.parse(newValue);
-            console.log(this.workspaceData);
             this.updateFileList();
         }
 	}
@@ -41,12 +42,21 @@ export class FileExplorer extends HTMLElement {
 	static get observedAttributes() {
 		return ["data"];
 	}
+    
+
 
     updateFileList() {
         this.fileList.innerHTML = "";
         for (const note of this.workspaceData.notes) {
             let listElem = document.createElement("li");
-            listElem.textContent = note.id.toString();
+            listElem.textContent = note.id;
+            listElem.addEventListener("click", (e: MouseEvent) => {
+                this.dispatchEvent(new CustomEvent<NoteChange>("notechange", {
+                    detail: {noteid: note.id},
+                    bubbles: true
+                }));
+            });
+
             this.fileList.appendChild(listElem);
         }
     }

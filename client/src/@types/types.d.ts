@@ -1,0 +1,5 @@
+
+
+interface NoteChange  {
+    noteid: string;
+}
