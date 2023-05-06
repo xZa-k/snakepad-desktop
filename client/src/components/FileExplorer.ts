@@ -1,8 +1,6 @@
-import { marked } from "marked";
 // @ts-ignore
-import myStyle from "./MarkDownEditor.css";
+import myStyle from "./FileExplorer.css";
 import { WorkspaceData } from "../notes";
-import { MarkDownEditor } from "./MarkDownEditor";
 
 export class FileExplorer extends HTMLElement {
 
