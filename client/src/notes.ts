@@ -5,10 +5,12 @@ import { MarkDownEditor } from "./components/MarkDownEditor";
 export class Note {
     public text: string;
     public id: string;
+    public title: string;
 
     constructor (text: string) {
         this.text = text;
         this.id = Math.floor(Math.random() * 100000).toString();
+        this.title = this.id;
     }
 }
 
@@ -35,12 +37,25 @@ export class Workspace{
 
 
         this.textEditor = new MarkDownEditor();
-        this.textEditor.setAttribute("noteid", this._selectedNote);
+
+        // console.log(this.selectedNote);
+        // this.textEditor.setAttribute("noteid", this.selectedNote);
+        // this.textEditor.setAttribute("title", this)
+        
+
+
         this.textEditor.addEventListener("input", (e) => this.inputHandler(e, this));
+        this.textEditor.noteTitleHeader.addEventListener("focusout", (e) => {
+            let newTitle = this.textEditor.noteTitleHeader.textContent;
+            this.textEditor.setAttribute("title", newTitle);
+            this.getNoteById(this.selectedNote).title = newTitle;
+        });
 
         // Will overwrite data.notes if stuff is saved, else keep the empty note
         this.loadWorkspace();
         this.selectedNote = this.notes[0].id;
+
+        this.textEditor.setAttribute("title", this.getNoteById(this.selectedNote).title);
 
 
         this.fileExplorer = new FileExplorer();
@@ -57,6 +72,7 @@ export class Workspace{
             if (note.id == noteid) {
                 workspace.selectedNote = noteid;
                 workspace.textEditor.textarea.value = note.text;
+                // workspace.textEditor.noteTitle.textContent = note.title;
             }
         }
     }
@@ -102,6 +118,7 @@ export class Workspace{
 
     set selectedNote(value) {
         this.textEditor.setAttribute("noteid", value);
+        this.textEditor.setAttribute("title", this.getNoteById(value).title);
         this._selectedNote = value;
     }
 

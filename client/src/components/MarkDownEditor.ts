@@ -6,15 +6,17 @@ export class MarkDownEditor extends HTMLElement {
 	textarea: HTMLTextAreaElement;
 	container: HTMLDivElement;
 	output: HTMLDivElement;
-	noteTitle: HTMLHeadingElement;
+	noteTitleHeader: HTMLHeadingElement;
 	toggle: boolean;
 	buttons: DocumentFragment;
 	posCaretStart: number;
 	posCaretEnd: number;
 	noteid: string;
+	noteTitle: string;
 
 	constructor() {
 		super();
+
 
 		this.toggle = false;
 		this.setAttribute("toggle", "false");
@@ -24,8 +26,11 @@ export class MarkDownEditor extends HTMLElement {
 		this.container = document.createElement("div");
 		this.container.id = "container";
 
-		this.noteTitle = document.createElement("h1");
-		this.noteTitle.textContent = this.noteid;
+		this.noteTitleHeader = document.createElement("h1");
+		this.noteTitleHeader.textContent = this.noteid;
+		this.noteTitleHeader.setAttribute("contenteditable", "true");
+
+
 
 		this.textarea = document.createElement("textarea");
 		this.container.append(this.textarea);
@@ -61,7 +66,7 @@ export class MarkDownEditor extends HTMLElement {
 		console.log(myStyle);
 		style.innerHTML = myStyle;
 
-		shadow.append(this.noteTitle, this.buttons, this.container, style);
+		shadow.append(this.noteTitleHeader, this.buttons, this.container, style);
 	}
 
 	attributeChangedCallback(name, oldValue: string, newValue: string) {
@@ -70,12 +75,15 @@ export class MarkDownEditor extends HTMLElement {
 			this.preview();
 		} else if (name == "noteid") {
 			this.noteid = newValue;
-			this.noteTitle.textContent = newValue;
 		}
+		else if (name == "title") {
+			this.noteTitle = newValue;
+			this.noteTitleHeader.textContent = this.noteTitle;
+		 }
 	}
 
 	static get observedAttributes() {
-		return ["toggle", "noteid"];
+		return ["toggle", "noteid", "title"];
 	}
 
 	notechange(e: CustomEvent<NoteChange>) {
