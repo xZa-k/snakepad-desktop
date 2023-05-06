@@ -1,61 +1,19 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../src/main.scss">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>Snakepad</title>
-</head>
-
-<body>
-    <header>
-        <div id="editorContainer">
-
-            <img class="profilepicture" src="img/profile.png" alt="Profile Picture" width= '50px' height= '50px'>
-         <div id="filebuttons">
-            <button id="file" onclick="file()">File</button> 
-            <button id="edit" onclick="edit()">Edit</button> 
-            <button id="Insert" onclick="insert()">Insert</button> 
-            <button id="view" onclick="view()">View</button> 
-            <button id="help" onclick="help()">Help</button> 
-            <button id="format" onclick="format()">Format</button> 
-            <button id="preview" onclick="parseMarked()">Preview</button> 
-        </div>
-        <h1>Title of document.</h1>
-        <hr>
-            <div id="result"></div> 
-            <div style='display: block' id="editor">
-                <div id="buttons">
-                    <button id="Bold" onclick="bold()"> <img src="img/bold.png" alt="Bold"  width= '15px' height= '15px'></button>
-                    <button id="italics" onclick="italics()"><img src="img/Italic.png" alt="Itlaic"  width= '15px' height= '15px'></button>
-                    <button id="link" onclick="link()"><img src="img/link.png" alt="link"  width= '15px' height= '15px'></button>
-                    <button id="underline" onclick="underline()"> <img src="img/underline.png" alt="Bold"  width= '15px' height= '15px'></button>
-                    <button id="unList" onclick="unList()"><img src="img/list.png" alt="Bold"  width= '15px' height= '15px'></button>
-                    <button id="orList" onclick="orList()"><img src="img/numberlist.png" alt="Bold"  width= '15px' height= '15px'></button>
-                    <button id="jleft" onclick="jleft()"><img src="img/jleft.png" alt="jleft"  width= '15px' height= '15px'></button>
-                    <button id="jjustify" onclick="jjustify()"><img src="img/jjustify.png" alt="jjustify    "  width= '15px' height= '15px'></button>
-                    <button id="jcenter" onclick="jcenter()"><img src="img/jcenter.png" alt="jcenter"  width= '15px' height= '15px'></button>
-                    <button id="jright" onclick="jright()"><img src="img/jright.png" alt="jright"  width= '15px' height= '15px'></button>
-                    <form style="display: inline;">
-                        <select id="myList" onchange="heading(this)">
-                            <option selected="selected" id="option0"> -- Headers -- </option>
-                            <option id="1"> Heading 1</option>
-                            <option id="2"> Heading 2</option>
-                            <option id="3"> Heading 3</option>
-                        </select>
-                    </form>
-                    </div>
-               </div>
-            </div> 
-    </header>   
-    <div id="main">
-        <div class="leftstyle"></div>
-        <textarea id="textBox"onmouseout="getCaret()"></textarea>
-    </div>
-    <!-- OnClick is not supported so change to event listener-->
-</body>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css"  href="../src/main.scss">
+        <link rel="stylesheet" type="text/css"  href="css/homestyle.css">
+        <title>Snakepad Home</title>
+    </head>
+    <body>
+        <h1>Snakepad</h1>
+        <form action="note.html">
+            <input type="text" id="usenarname" name="user" placeholder="......Username......"><br>
+            <input type="password"  id="passwd" name="passwd" placeholder="......Password......"><br><br>
+            <input type="submit" value="Login">
+        </form>   
+    </body>
 </html>
