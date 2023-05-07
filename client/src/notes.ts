@@ -23,6 +23,25 @@ export class WorkspaceData {
     }
 }
 
+export async function getUserByUsername(username: string): Promise<User> {
+    let resp = await fetch(`/api/getUserByName/${username}`, {
+        method: "GET",
+    });
+    let user: User = await resp.json();
+    return user;
+}
+
+export async function updateUserByUsername(username: string, userData: NoteData[]) {
+    let resp = await fetch(`/api/updateUserByName/${username}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userData)
+    });
+    console.log(resp);
+}
+
 export class Workspace{
     public textEditor: MarkDownEditor;
     public data: WorkspaceData;
@@ -34,6 +53,11 @@ export class Workspace{
 
         this.data = new WorkspaceData();
         this.notes = [new Note("")];
+
+        getUserByUsername("Z_akk_").then((user) => {
+            console.log(user);
+            // updateUserByUsername("Z_akk_", this.notes);
+        })
 
 
         this.textEditor = new MarkDownEditor();
@@ -60,13 +84,17 @@ export class Workspace{
 
         this.fileExplorer = new FileExplorer();
         this.fileExplorer.setAttribute("data", JSON.stringify(this.data));
-        this.fileExplorer.addEventListener("notechange", (e: CustomEvent<NoteChange>) => this.loadNoteCallback(e, this));
+        this.fileExplorer.addEventListener("notechange", (e: CustomEvent<NoteChange>) => this.saveNoteCallback(e, this));
+        
+        setInterval(() => {
+
+        }, 30000) // 30 seconds
 
         parent.appendChild(this.fileExplorer);
         parent.appendChild(this.textEditor);
     }
 
-    loadNoteCallback(e: CustomEvent<NoteChange>, workspace: Workspace) {
+    saveNoteCallback(e: CustomEvent<NoteChange>, workspace: Workspace) {
         let noteid = e.detail.noteid;
         for (const note of workspace.notes) {
             if (note.id == noteid) {

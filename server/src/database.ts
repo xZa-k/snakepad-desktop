@@ -20,7 +20,7 @@ db.execute(`
 
 
 
-export function createUser(username: string, noteData: NoteData) {
+export function createUser(username: string, noteData: NoteData[]) {
     db.query(`
     INSERT INTO user (username, note_data) VALUES (?, ?)
     `, [username, JSON.stringify(noteData)]);
@@ -42,10 +42,26 @@ export function getUserByUsername(usernameParam: string): User {
     }
 }
 
+export function updateUser(username: string, noteData: NoteData[]) {
+    console.log(username);
+    console.log(noteData);
+    db.prepareQuery(`
+        UPDATE user SET note_data = :noteData WHERE username = :username
+    `).execute({
+        username,
+        noteData: JSON.stringify(noteData)
+    });
+}
+
+// updateUser("Z_akk_", [{
+//     id: "123",
+//     title: "new title",
+//     text: "UPDATED TEXT!!!"
+// }]);
 // console.log(getUserByUsername("Z_akk_"));
 
-// createUser("Z_akk_", {
+// createUser("Z_akk_", [{
 //     id: "19239123",
 //     title: "my title",
 //     text: "REALLY LONG TEXT!!!"
-// });
+// }]);

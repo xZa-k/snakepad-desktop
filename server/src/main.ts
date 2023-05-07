@@ -1,6 +1,6 @@
 import express from "express";
 import "./database.ts";
-import { getUserByUsername } from "./database.ts";
+import { getUserByUsername, updateUser } from "./database.ts";
 const app = express();
 const port = 3000;
 
@@ -21,7 +21,11 @@ app.get("/api/getUserByName/:username", (req: express.Request, res: express.Resp
   } catch (e) {
     res.send("Username not found");
   }
-  
+});
+
+app.post("/api/updateUserByName/:username", express.json(), (req: express.Request, res: express.Response) => {
+  updateUser(req.params.username, req.body);
+  console.log("updating user");
 });
 
 app.listen(port, () => {
