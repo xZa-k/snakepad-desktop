@@ -54,18 +54,14 @@ export class Workspace{
         this.data = new WorkspaceData();
         this.notes = [new Note("")];
 
-        getUserByUsername("Z_akk_").then((user) => {
-            console.log(user);
-            // updateUserByUsername("Z_akk_", this.notes);
-        })
+        // getUserByUsername("Z_akk_").then((user) => {
+        //     console.log(user);
+        //     // updateUserByUsername("Z_akk_", this.notes);
+        // })
 
 
         this.textEditor = new MarkDownEditor();
 
-        // console.log(this.selectedNote);
-        // this.textEditor.setAttribute("noteid", this.selectedNote);
-        // this.textEditor.setAttribute("title", this)
-        
 
 
         this.textEditor.addEventListener("input", (e) => this.inputHandler(e, this));
@@ -76,22 +72,24 @@ export class Workspace{
         });
 
         // Will overwrite data.notes if stuff is saved, else keep the empty note
-        this.loadWorkspace();
-        this.selectedNote = this.notes[0].id;
+        this.loadWorkspace().then(() => {
+            this.selectedNote = this.notes[0].id;
 
-        this.textEditor.setAttribute("title", this.getNoteById(this.selectedNote).title);
+            this.textEditor.setAttribute("title", this.getNoteById(this.selectedNote).title);
+    
+    
+            this.fileExplorer = new FileExplorer();
+            this.fileExplorer.setAttribute("data", JSON.stringify(this.data));
+            this.fileExplorer.addEventListener("notechange", (e: CustomEvent<NoteChange>) => this.saveNoteCallback(e, this));   
+            parent.appendChild(this.fileExplorer);
+            parent.appendChild(this.textEditor); 
+        })
 
-
-        this.fileExplorer = new FileExplorer();
-        this.fileExplorer.setAttribute("data", JSON.stringify(this.data));
-        this.fileExplorer.addEventListener("notechange", (e: CustomEvent<NoteChange>) => this.saveNoteCallback(e, this));
-        
         setInterval(() => {
 
         }, 30000) // 30 seconds
 
-        parent.appendChild(this.fileExplorer);
-        parent.appendChild(this.textEditor);
+
     }
 
     saveNoteCallback(e: CustomEvent<NoteChange>, workspace: Workspace) {
@@ -112,16 +110,29 @@ export class Workspace{
 
         note.text = workspace.textEditor.textarea.value;
         localStorage.setItem("workspace", JSON.stringify(workspace.data));
-        this.fileExplorer.setAttribute("data", JSON.stringify(this.data));
+        // this.fileExplorer.setAttribute("data", JSON.stringify(this.data));
     }
 
-    loadWorkspace() {
-        const workspaceString = localStorage.getItem("workspace");
-        if (workspaceString) {
-            let workspaceData = JSON.parse(workspaceString) as WorkspaceData;
-            this.data = workspaceData;
+    async loadWorkspace() {
+        let user: User = await getUserByUsername("Z_akk_");
+        if (user) {
+            let noteData = user.noteData;
+            this.data = new WorkspaceData();
+            this.data.notes = noteData;
             this.textEditor.textarea.value = this.data.notes[0].text;
+            console.log(this);
+            
+        } else {
+            const workspaceString = localStorage.getItem("workspace");
+            if (workspaceString) {
+                let workspaceData = JSON.parse(workspaceString) as WorkspaceData;
+                this.data = workspaceData;
+                this.textEditor.textarea.value = this.data.notes[0].text;
+                console.log("LOCAL DATA!");
+            }
         }
+
+        
     }
 
     getNoteById(noteid: string): Note {

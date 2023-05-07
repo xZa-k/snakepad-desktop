@@ -57,6 +57,10 @@ export function updateUser(username: string, noteData: NoteData[]) {
 //     id: "123",
 //     title: "new title",
 //     text: "UPDATED TEXT!!!"
+// }, {
+//     id: "425",
+//     title: "second note",
+//     text: "some text for the second note dw about it"
 // }]);
 // console.log(getUserByUsername("Z_akk_"));
 

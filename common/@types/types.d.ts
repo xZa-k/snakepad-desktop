@@ -14,5 +14,5 @@ interface NoteData {
 interface User {
     id: number,
     username: string,
-    noteData: NoteData
+    noteData: NoteData[]
 }
