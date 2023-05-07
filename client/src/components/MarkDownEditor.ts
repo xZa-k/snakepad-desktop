@@ -7,7 +7,7 @@ export class MarkDownEditor extends HTMLElement {
 	container: HTMLDivElement;
 	output: HTMLDivElement;
 	toggle: boolean;
-	buttons: DocumentFragment;
+	buttons: HTMLDivElement;
 	posCaretStart: number;
 	posCaretEnd: number;
 
@@ -27,7 +27,8 @@ export class MarkDownEditor extends HTMLElement {
 
 		let template = document.querySelector("#buttons_template") as HTMLTemplateElement;
 		console.log(template);
-		this.buttons = template.content.cloneNode(true) as DocumentFragment;
+		let fragment = template.content.cloneNode(true) as DocumentFragment;
+		this.buttons = fragment.querySelector("#button_container") as HTMLDivElement;
 
 		let children = this.buttons.children;
 		for (let elem of children) {
