@@ -17,7 +17,6 @@ export class MarkDownEditor extends HTMLElement {
 	constructor() {
 		super();
 
-
 		this.toggle = false;
 		this.setAttribute("toggle", "false");
 
@@ -30,8 +29,6 @@ export class MarkDownEditor extends HTMLElement {
 		this.noteTitleHeader.id = "note_title_header";
 		this.noteTitleHeader.textContent = this.noteid;
 		this.noteTitleHeader.setAttribute("contenteditable", "true");
-
-
 
 		this.textarea = document.createElement("textarea");
 		this.container.append(this.textarea);
@@ -77,11 +74,10 @@ export class MarkDownEditor extends HTMLElement {
 			this.preview();
 		} else if (name == "noteid") {
 			this.noteid = newValue;
-		}
-		else if (name == "title") {
+		} else if (name == "title") {
 			this.noteTitle = newValue;
 			this.noteTitleHeader.textContent = this.noteTitle;
-		 }
+		}
 	}
 
 	static get observedAttributes() {
@@ -89,7 +85,7 @@ export class MarkDownEditor extends HTMLElement {
 	}
 
 	notechange(e: CustomEvent<NoteChange>) {
-		console.log(`The name ${e.detail.noteid}`)
+		console.log(`The name ${e.detail.noteid}`);
 	}
 
 	preview() {
@@ -99,15 +95,14 @@ export class MarkDownEditor extends HTMLElement {
 			this.output.innerHTML += "Preview Mode";
 			// Parse text into markdow
 			let rawText = this.textarea.value;
-			let markdown = marked.parse(rawText, { breaks: true}, {breaks: true}) ;
+			let markdown = marked.parse(rawText, { breaks: true });
 			this.output.innerHTML += markdown;
-			this.textarea.readOnly= true;
+			this.textarea.readOnly = true;
 			this.textarea.style.display = "none";
 		} else {
-			this.textarea.readOnly= false;
+			this.textarea.readOnly = false;
 			this.textarea.style.display = "block";
 			this.output.innerHTML = null;
-			
 		}
 	}
 
