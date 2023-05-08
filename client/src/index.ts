@@ -7,7 +7,7 @@ import "./components/FileExplorer";
 import { Note, Workspace } from "./notes";
 
 let workspace: Workspace;
-workspace = new Workspace(document.body);
+workspace = new Workspace(document.getElementById("main"), document.getElementsByClassName("leftstyle")[0] as HTMLElement);
 
 if (workspace.notes.length < 2)
     workspace.data.notes.push(new Note("You will never find me."));
