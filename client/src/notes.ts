@@ -49,7 +49,7 @@ export class Workspace{
     public _selectedNote: string;
 
 
-    constructor (parent: HTMLElement) {
+    constructor (editorParent: HTMLElement, fileExplorerParent: HTMLElement) {
 
         this.data = new WorkspaceData();
         this.notes = [new Note("")];
@@ -81,8 +81,8 @@ export class Workspace{
             this.fileExplorer = new FileExplorer();
             this.fileExplorer.setAttribute("data", JSON.stringify(this.data));
             this.fileExplorer.addEventListener("notechange", (e: CustomEvent<NoteChange>) => this.saveNoteCallback(e, this));   
-            parent.appendChild(this.fileExplorer);
-            parent.appendChild(this.textEditor); 
+            editorParent.appendChild(this.textEditor);
+            fileExplorerParent.appendChild(this.fileExplorer); 
         })
 
         setInterval(() => {

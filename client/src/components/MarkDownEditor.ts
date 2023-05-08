@@ -27,6 +27,7 @@ export class MarkDownEditor extends HTMLElement {
 		this.container.id = "container";
 
 		this.noteTitleHeader = document.createElement("h1");
+		this.noteTitleHeader.id = "note_title_header";
 		this.noteTitleHeader.textContent = this.noteid;
 		this.noteTitleHeader.setAttribute("contenteditable", "true");
 
@@ -67,7 +68,7 @@ export class MarkDownEditor extends HTMLElement {
 		console.log(myStyle);
 		style.innerHTML = myStyle;
 
-		shadow.append(this.noteTitleHeader, this.buttons, this.container, style);
+		shadow.append(this.buttons, this.noteTitleHeader, this.container, style);
 	}
 
 	attributeChangedCallback(name, oldValue: string, newValue: string) {
