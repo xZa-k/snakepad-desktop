@@ -96,7 +96,7 @@ export class MarkDownEditor extends HTMLElement {
 		if (this.toggle) {
 			// Parse text into markdow
 			let rawText = this.textarea.value;
-			let markdown = marked.parse(rawText);
+			let markdown = marked.parse(rawText, { breaks: true});
 
 			this.output.innerHTML = markdown;
 			this.textarea.style.display = "none";

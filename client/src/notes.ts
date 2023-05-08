@@ -94,6 +94,7 @@ export class Workspace{
 
     saveNoteCallback(e: CustomEvent<NoteChange>, workspace: Workspace) {
         let noteid = e.detail.noteid;
+        workspace.data = workspace.fileExplorer.workspaceData;
         for (const note of workspace.notes) {
             if (note.id == noteid) {
                 workspace.selectedNote = noteid;
@@ -101,16 +102,18 @@ export class Workspace{
                 // workspace.textEditor.noteTitle.textContent = note.title;
             }
         }
+        updateUserByUsername("Z_akk_", this.notes);
     }
 
     inputHandler(e: Event, workspace: Workspace) {
         e.preventDefault();
 
         let note = this.getNoteById(workspace.selectedNote);
-
+    
+        note.title = workspace.textEditor.noteTitleHeader.textContent;
         note.text = workspace.textEditor.textarea.value;
         localStorage.setItem("workspace", JSON.stringify(workspace.data));
-        // this.fileExplorer.setAttribute("data", JSON.stringify(this.data));
+        workspace.fileExplorer.updateFileList();
     }
 
     async loadWorkspace() {
