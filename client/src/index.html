@@ -1,31 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Snakepad</title>
-    </head>
 
-    <body>
-        <h1>Snakepad</h1>
-        <p>Letssss Go!</p>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snakepad Home</title>
+</head>
 
-        <template id="buttons_template">
+<body>
+    <!-- <form action="note.html">
+            <input type="text" id="usenarname" name="user" placeholder="......Username......"><br>
+            <input type="password"  id="passwd" name="passwd" placeholder="......Password......"><br><br>
+            <input type="submit" value="Login">
+        </form>    -->
+
+    <header>
+        <div id="editorContainer">
+            <img class="profilepicture" src="img/profile.png" alt="Profile Picture" width='50px' height='50px'>
+            <div id="filebuttons">
+                <button id="file" onclick="file()">File</button>
+                <button id="edit" onclick="edit()">Edit</button>
+                <button id="Insert" onclick="insert()">Insert</button>
+                <button id="view" onclick="view()">View</button>    
+                <button id="help" onclick="help()">Help</button>
+                <button id="format" onclick="format()">Format</button>
+                <button id="preview" onclick="parseMarked()">Preview</button>
+            </div>
+            <hr>
+    <template id="buttons_template">
+        <div id="button_container">
             <button id="preview">Preview</button>
-            <button id="bold">Bold</button>
-            <button id="italics">Italics</button>
-            <button id="link" >Link</button>
-            <button id="unList">Bullet Points</button>
-            <button id="orList">Numbered List</button>
+            <button id="bold"><img src="img/bold.png" height="20px" width="20px" /></button>
+            <button id="italics"><img src="img/italic.png" height="20px" width="20px" /></button>
+            <button id="link"><img src="img/link.png" height="20px" width="20px" /></button>
+            <button id="unList"><img src="img/list.png" height="20px" width="20px" /></button>
+            <!-- If you need any more buttons  copy the line down below--->
+            <button id="orList"><img src="img/numberlist.png" height="20px" width="20px" /></button>
+            <!-- If you need any more buttons  copy the line above--->
             <form style="display: inline;">
-                <select id ="headers">
+                <select id="headers">
                     <option selected="selected" id="option0"> -- Headers -- </option>
                     <option id="1"> Heading 1</option>
-                    <option id="2"> Heading 2</option> 
-                    <option id="3"> Heading 3</option> 
+                    <option id="2"> Heading 2</option>
+                    <option id="3"> Heading 3</option>
                 </select>
             </form>
-        </template>
+        </div>
+    </template>
+</header>
+    <div id="main">
+        <div class="leftstyle"><span></span></div>
+        <markdown-editor toggle="false">
+        </markdown-editor>
+    </div>
 
-        <markdown-editor toggle="false"></markdown-editor>
+</body>
 
-    </body>
 </html>

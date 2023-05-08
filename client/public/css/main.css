@@ -1,18 +1,18 @@
 html {
     min-height: 100%;
-    max-width: 100%;
 }
 
 body {
     background-color: #151E0F;
     margin: 0 auto;
-    height: 100vh;
+
 }
 header {
+
     background-color: #515B3A;
     width: 100%;
     border-bottom-right-radius:  25px;
-    padding-bottom: 100px;
+
 }
 h1 {
     font-size: 25px;
@@ -34,11 +34,42 @@ button {
     font-size: 15px;
     margin-top: 25px;
 }
-#filebuttons button:hover{
+#buttons {
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+#buttons button , #buttons select{
+    background-color: #6BA368;
+    color: white;
+    padding: 15px 15px;
+    border-radius: 15px;
+    margin-top: 20px; 
+}
+#filebuttons button:hover, #buttons button:hover , #buttons select:hover{
     background-color: rgb(133, 126, 126);
     border-radius: 15px;
     cursor: pointer;
 }
+
+textarea {
+    margin: 40px auto;
+    width: 70%;
+    height: 75vh;
+    display: flex;
+    border-radius: 25px;
+    padding: 50px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+
 .profilepicture {
     border-radius: 80%;
     float: left;
@@ -49,13 +80,9 @@ hr{
     border: 3px solid  #5a9f52;
 }
 .leftstyle{
-    width: 200px;
-    height: 80vh;
+    width:100px;
     background-color: #2D3527;
     border-top-right-radius: 25px;  
-}
-.leftstyle span{
-    color: #2D3527;
 }
 #main{
     display: flex;
