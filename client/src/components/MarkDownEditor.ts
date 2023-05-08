@@ -72,15 +72,18 @@ export class MarkDownEditor extends HTMLElement {
 		this.toggle = !this.toggle;
 		console.log(`toggle: ${this.toggle}`);
 		if (this.toggle) {
+			this.output.innerHTML += "Preview Mode";
 			// Parse text into markdow
 			let rawText = this.textarea.value;
-			let markdown = marked.parse(rawText);
-
-			this.output.innerHTML = markdown;
+			let markdown = marked.parse(rawText) ;
+			this.output.innerHTML += markdown;
+			this.textarea.readOnly= true;
 			this.textarea.style.display = "none";
 		} else {
+			this.textarea.readOnly= false;
 			this.textarea.style.display = "block";
 			this.output.innerHTML = null;
+			
 		}
 	}
 

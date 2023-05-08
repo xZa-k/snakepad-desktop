@@ -23,7 +23,7 @@ body{
     border-radius: 15px;
     cursor: pointer;
 }
-textarea {
+textarea , #previewcontent {
     position: absolute;
     width: 70%;
     height: 75vh;
@@ -33,7 +33,9 @@ textarea {
     overflow-y: scroll;
     margin-left: 150px;
     margin-top: 25px;
+    resize: none;   
 }
 #previewcontent {
-    background-color: red;
+   z-index: -1;
+   background-color: rgb(245, 245, 245);
 }
