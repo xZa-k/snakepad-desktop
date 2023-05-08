@@ -6,17 +6,32 @@ export class MarkDownEditor extends HTMLElement {
 	textarea: HTMLTextAreaElement;
 	container: HTMLDivElement;
 	output: HTMLDivElement;
+	noteTitleHeader: HTMLHeadingElement;
 	toggle: boolean;
 	buttons: HTMLDivElement;
 	posCaretStart: number;
 	posCaretEnd: number;
+	noteid: string;
+	noteTitle: string;
 
 	constructor() {
 		super();
+
+
 		this.toggle = false;
+		this.setAttribute("toggle", "false");
+
+		this.addEventListener("notechange", this.notechange);
 
 		this.container = document.createElement("div");
 		this.container.id = "container";
+
+		this.noteTitleHeader = document.createElement("h1");
+		this.noteTitleHeader.id = "note_title_header";
+		this.noteTitleHeader.textContent = this.noteid;
+		this.noteTitleHeader.setAttribute("contenteditable", "true");
+
+
 
 		this.textarea = document.createElement("textarea");
 		this.container.append(this.textarea);
@@ -53,19 +68,28 @@ export class MarkDownEditor extends HTMLElement {
 		console.log(myStyle);
 		style.innerHTML = myStyle;
 
-		shadow.append(this.buttons, this.container, style);
+		shadow.append(this.buttons, this.noteTitleHeader, this.container, style);
 	}
 
 	attributeChangedCallback(name, oldValue: string, newValue: string) {
-		if (name == "toggle") {
-			console.log("AYO");
+		if (name == "toggle" && this.isConnected) {
 			this.toggle = !(newValue == "true");
 			this.preview();
+		} else if (name == "noteid") {
+			this.noteid = newValue;
 		}
+		else if (name == "title") {
+			this.noteTitle = newValue;
+			this.noteTitleHeader.textContent = this.noteTitle;
+		 }
 	}
 
 	static get observedAttributes() {
-		return ["toggle"];
+		return ["toggle", "noteid", "title"];
+	}
+
+	notechange(e: CustomEvent<NoteChange>) {
+		console.log(`The name ${e.detail.noteid}`)
 	}
 
 	preview() {
@@ -75,7 +99,7 @@ export class MarkDownEditor extends HTMLElement {
 			this.output.innerHTML += "Preview Mode";
 			// Parse text into markdow
 			let rawText = this.textarea.value;
-			let markdown = marked.parse(rawText, {breaks: true}) ;
+			let markdown = marked.parse(rawText, { breaks: true}, {breaks: true}) ;
 			this.output.innerHTML += markdown;
 			this.textarea.readOnly= true;
 			this.textarea.style.display = "none";

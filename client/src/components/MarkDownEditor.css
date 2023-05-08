@@ -1,5 +1,15 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 body{
     height: 100%;
+}
+
+#note_title_header {
+    color: white;
+    text-align: center;
+    margin-left: 35vw;
 }
 
 #button_container {
