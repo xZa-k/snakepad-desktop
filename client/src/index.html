@@ -17,23 +17,19 @@
 
     <header>
         <div id="editorContainer">
-
+    
             <img class="profilepicture" src="img/profile.png" alt="Profile Picture" width='50px' height='50px'>
             <div id="filebuttons">
                 <button id="file" onclick="file()">File</button>
                 <button id="edit" onclick="edit()">Edit</button>
                 <button id="Insert" onclick="insert()">Insert</button>
-                <button id="view" onclick="view()">View</button>
+                <button id="view" onclick="view()">View</button>    
                 <button id="help" onclick="help()">Help</button>
                 <button id="format" onclick="format()">Format</button>
                 <button id="preview" onclick="parseMarked()">Preview</button>
             </div>
             <hr>
-    </header>
-    <div id="main">
-        <div class="leftstyle"></div>
-        <markdown-editor toggle="false"></markdown-editor>
-    </div>
+
     <template id="buttons_template">
         <div id="button_container">
             <button id="preview">Preview</button>
@@ -42,7 +38,7 @@
             <button id="link"><img src="img/link.png" height="15px" width="15px" /></button>
             <button id="unList"><img src="img/list.png" height="15px" width="15px" /></button>
             <button id="orList"><img src="img/numberlist.png" height="15px" width="15px" /></button>
-            <form>
+            <form style="display: inline;">
                 <select id="headers">
                     <option selected="selected" id="option0"> -- Headers -- </option>
                     <option id="1"> Heading 1</option>
@@ -52,6 +48,12 @@
             </form>
         </div>
     </template>
+</header>
+    <div id="main">
+        <div class="leftstyle"><span></span></div>
+        <markdown-editor toggle="false">
+        </markdown-editor>
+    </div>
 
 </body>
 

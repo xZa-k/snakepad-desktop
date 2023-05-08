@@ -1,48 +1,39 @@
-body {
-    font-family: Sans Serif;
+body{
+    height: 100%;
 }
 
-button {
+#button_container {
     cursor: pointer;
-}
-button {
-    cursor: pointer;
-    margin-top: 20px;
     text-align: center;
-    position: relative;
+    float: none;
+    position: absolute;
     left: 50%;
-}
-button, select{
+    margin-top: -60px;
+    transform: translate(-50%, -50%);
+  }
+#button_container button , #button_container select{
     background-color: #6BA368;
     color: white;
     padding: 15px 15px;
     border-radius: 15px;
+    margin-top: 20px; 
 }
-
-textarea {
-    width: 70%;
-    height: 75vh;
-    display: flex;
-    position: relative;
-    border-radius: 25px;
-    padding: 50px;
-    box-sizing: border-box;
-    overflow-y: scroll;
-}
-
-button:hover, button select:hover{
+#filebuttons button:hover, #button_container button:hover , #button_container select:hover{
     background-color: rgb(133, 126, 126);
     border-radius: 15px;
     cursor: pointer;
 }
-
-#button_container {
-    display: inline;
-    flex-direction:row;
+textarea {
+    position: absolute;
+    width: 70%;
+    height: 75vh;
+    border-radius: 25px;
+    padding: 50px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    margin-left: 150px;
+    margin-top: 25px;
 }
-
-#preview {
-    color: white;
-    height: inherit;
-    width: inherit;
+#previewcontent {
+    background-color: red;
 }

@@ -22,7 +22,7 @@ export class MarkDownEditor extends HTMLElement {
 		this.container.append(this.textarea);
 
 		this.output = document.createElement("div");
-		this.output.id = "preview";
+		this.output.id = "previewcontent";
 		this.container.append(this.output);
 
 		let template = document.querySelector("#buttons_template") as HTMLTemplateElement;
