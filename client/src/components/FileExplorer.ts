@@ -27,11 +27,20 @@ export class FileExplorer extends HTMLElement {
         this.deleteNoteButton.addEventListener("click", (e) => {
             // Don't let the user remove all notes
             if (this.workspaceData.notes.length <= 1) return;
+            
+            for (let i = 0; i < this.workspaceData.notes.length; i++) {
+                const note = this.workspaceData.notes[i];
+                
+                if (note.id == this.selectedNote) {
+                    this.workspaceData.notes.splice(i, 1);
+                    this.setAttribute("data", JSON.stringify(this.workspaceData));
+                    localStorage.setItem("workspace", JSON.stringify(this.workspaceData));
+                    this.noteChange(this.workspaceData.notes[0]);
+                    break;
+                }
+            }
+            
 
-            this.workspaceData.notes.splice(0, 1);
-            this.setAttribute("data", JSON.stringify(this.workspaceData));
-            localStorage.setItem("workspace", JSON.stringify(this.workspaceData));
-            this.noteChange(this.workspaceData.notes[0]);
 
         });
         this.container.appendChild(this.deleteNoteButton);
