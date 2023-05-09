@@ -12,7 +12,6 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "allowJs": true,
-    "types": ["../common/@types/types"],
   },
   "exclude": ["dist/"]
 }
