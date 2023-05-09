@@ -4,43 +4,32 @@ import myStyle from "./MarkDownEditor.css";
 
 export class MarkDownEditor extends HTMLElement {
 	textarea: HTMLTextAreaElement;
+	input: HTMLInputElement;
 	container: HTMLDivElement;
 	output: HTMLDivElement;
-	noteTitleHeader: HTMLHeadingElement;
 	toggle: boolean;
-	buttons: HTMLDivElement;
+	buttons: DocumentFragment;
 	posCaretStart: number;
 	posCaretEnd: number;
-	noteid: string;
-	noteTitle: string;
 
 	constructor() {
 		super();
-
 		this.toggle = false;
-		this.setAttribute("toggle", "false");
-
-		this.addEventListener("notechange", this.notechange);
 
 		this.container = document.createElement("div");
 		this.container.id = "container";
 
-		this.noteTitleHeader = document.createElement("h1");
-		this.noteTitleHeader.id = "note_title_header";
-		this.noteTitleHeader.textContent = this.noteid;
-		this.noteTitleHeader.setAttribute("contenteditable", "true");
-
 		this.textarea = document.createElement("textarea");
 		this.container.append(this.textarea);
+		this.textarea.className = "Editor";
 
 		this.output = document.createElement("div");
-		this.output.id = "previewcontent";
+		this.output.id = "output";
 		this.container.append(this.output);
 
 		let template = document.querySelector("#buttons_template") as HTMLTemplateElement;
 		console.log(template);
-		let fragment = template.content.cloneNode(true) as DocumentFragment;
-		this.buttons = fragment.querySelector("#button_container") as HTMLDivElement;
+		this.buttons = template.content.cloneNode(true) as DocumentFragment;
 
 		let children = this.buttons.children;
 		for (let elem of children) {
@@ -49,10 +38,19 @@ export class MarkDownEditor extends HTMLElement {
 					e.preventDefault();
 					this[elem.id]();
 				});
-			} else {
+			} else if (elem.tagName == "FORM") {
 				console.log(elem.firstElementChild);
 				elem.firstElementChild.addEventListener("change", (e) => {
-					this.heading(elem.firstElementChild);
+					e.preventDefault();
+					this[elem.firstElementChild.id](elem.firstElementChild);
+				});
+			} else if (elem.tagName == "INPUT") {
+				elem.addEventListener("keydown", (event: KeyboardEvent) => {
+					this.updateInputSize(elem);
+					if (event.key == "Enter") {
+						console.log(elem.id);
+						this[elem.id](elem);
+					}
 				});
 			}
 		}
@@ -65,42 +63,32 @@ export class MarkDownEditor extends HTMLElement {
 		console.log(myStyle);
 		style.innerHTML = myStyle;
 
-		shadow.append(this.buttons, this.noteTitleHeader, this.container, style);
+		shadow.append(this.buttons, this.container, style);
 	}
 
 	attributeChangedCallback(name, oldValue: string, newValue: string) {
-		if (name == "toggle" && this.isConnected) {
+		if (name == "toggle") {
+			console.log("AYO");
 			this.toggle = !(newValue == "true");
 			this.preview();
-		} else if (name == "noteid") {
-			this.noteid = newValue;
-		} else if (name == "title") {
-			this.noteTitle = newValue;
-			this.noteTitleHeader.textContent = this.noteTitle;
 		}
 	}
 
 	static get observedAttributes() {
-		return ["toggle", "noteid", "title"];
-	}
-
-	notechange(e: CustomEvent<NoteChange>) {
-		console.log(`The name ${e.detail.noteid}`);
+		return ["toggle"];
 	}
 
 	preview() {
 		this.toggle = !this.toggle;
 		console.log(`toggle: ${this.toggle}`);
 		if (this.toggle) {
-			this.output.innerHTML += "Preview Mode";
 			// Parse text into markdow
 			let rawText = this.textarea.value;
-			let markdown = marked.parse(rawText, { breaks: true });
-			this.output.innerHTML += markdown;
-			this.textarea.readOnly = true;
+			let markdown = marked.parse(rawText);
+
+			this.output.innerHTML = markdown;
 			this.textarea.style.display = "none";
 		} else {
-			this.textarea.readOnly = false;
 			this.textarea.style.display = "block";
 			this.output.innerHTML = null;
 		}
@@ -194,6 +182,28 @@ export class MarkDownEditor extends HTMLElement {
 		}
 		substring = newLines.join("\n");
 		this.textarea.value = `${startString}${substring}${endString}`;
+	}
+
+	setFont(elem) {
+		let root = document.documentElement;
+		let id = elem[elem.selectedIndex].id;
+
+		console.log(id);
+		root.style.setProperty("--font", id);
+	}
+
+	setFontSize(elem) {
+		let root = document.documentElement;
+		console.log(elem);
+		const numInput = Number(elem.value);
+
+		root.style.setProperty("--fontSize", numInput + "px");
+	}
+
+	updateInputSize(elem) {
+		const root = document.documentElement;
+
+		root.style.setProperty("--inputSize", elem.value.length + 1 + "ch");
 	}
 }
 customElements.define("markdown-editor", MarkDownEditor);

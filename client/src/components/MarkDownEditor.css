@@ -1,51 +1,34 @@
-* {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+:root{
+    --font: 'Arial';
+    --fontSize: 16px;
+    --inputSize: 2ch;
 }
 
-body{
-    height: 100%;
+textarea {
+    width: 90%;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-family: var(--font);
+    font-size: var(--fontSize);
 }
 
-#note_title_header {
-    color: white;
+#output{
+    font-family: var(--font);
+    font-size: var(--fontSize);
+}
+
+input{
+    width: var(--inputSize);
+    max-width: 3ch;
     text-align: center;
-    margin-left: 35vw;
+
 }
 
-#button_container {
-    cursor: pointer;
-    text-align: center;
-    float: none;
-    position: absolute;
-    left: 50%;
-    margin-top: -60px;
-    transform: translate(-50%, -50%);
-  }
-#button_container button , #button_container select{
-    background-color: #6BA368;
-    color: white;
-    padding: 15px 15px;
-    border-radius: 15px;
-    margin-top: 20px; 
-}
-#filebuttons button:hover, #button_container button:hover , #button_container select:hover{
-    background-color: rgb(133, 126, 126);
-    border-radius: 15px;
-    cursor: pointer;
-}
-textarea , #previewcontent {
-    position: absolute;
-    width: 70%;
-    height: 75vh;
-    border-radius: 25px;
-    padding: 50px;
-    box-sizing: border-box;
-    overflow-y: scroll;
-    margin-left: 150px;
-    margin-top: 25px;
-    resize: none;   
-}
-#previewcontent {
-   z-index: -1;
-   background-color: rgb(245, 245, 245);
+button {
+    margin-left: 4.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: red;
 }

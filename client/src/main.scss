@@ -1,62 +1,25 @@
-html {
-    min-height: 100%;
-    max-width: 100%;
-}
+$body-color: red;
 
 body {
-    background-color: #151E0F;
-    margin: 0 auto;
-    height: 100vh;
 }
-header {
-    background-color: #515B3A;
-    width: 100%;
-    border-bottom-right-radius:  25px;
-    padding-bottom: 100px;
+
+.Editor{
+    width: 90%;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
-h1 {
-    font-size: 25px;
+
+#buttons{
+    margin-left: 4.5rem;
+    margin-top: 1rem;
+}
+
+option{
     text-align: center;
-    color: #E6FAFC;
-    margin-top: -20px;
 }
-button {
-    cursor: pointer;
-}
-#filebuttons button{
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    font-weight: bold;
-    color:  white;
-    font-size: 15px;
-    margin-top: 25px;
-}
-#filebuttons button:hover{
-    background-color: rgb(133, 126, 126);
-    border-radius: 15px;
-    cursor: pointer;
-}
-.profilepicture {
-    border-radius: 80%;
-    float: left;
-    margin-top: 10px;
-    margin-left: 20px;
-}
-hr{
-    border: 3px solid  #5a9f52;
-}
-.leftstyle{
-    width: 200px;
-    height: 80vh;
-    background-color: #2D3527;
-    border-top-right-radius: 25px;  
-}
-.leftstyle span{
-    color: #2D3527;
-}
-#main{
-    display: flex;
+
+#option0{
+    color: rgb(88, 88, 88);
 }
