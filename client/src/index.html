@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html style ="--inputSize:3ch; --fontSize:16px;">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snakepad Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine|Inconsolata|Droid+Sans">
 </head>
 
 <body>
@@ -39,11 +40,20 @@
             <button id="orList"><img src="img/numberlist.png" height="20px" width="20px" /></button>
             <!-- If you need any more buttons  copy the line above--->
             <form style="display: inline;">
-                <select id="headers">
+                <select id="heading">
                     <option selected="selected" id="option0"> -- Headers -- </option>
                     <option id="1"> Heading 1</option>
                     <option id="2"> Heading 2</option>
                     <option id="3"> Heading 3</option>
+                </select>
+            </form>
+            <input type="text" id="setFontSize" value="16">
+            <form style="display: inline;">
+                <select id ="setFont">
+                    <option selected="selected" id="Arial">Arial</option>
+                    <option id="Tangerine">Tangerine</option>
+                    <option id="Inconsolata">Inconsolata</option> 
+                    <option id="Droid">Droid</option> 
                 </select>
             </form>
         </div>

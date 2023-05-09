@@ -1,3 +1,9 @@
+:root{
+    --font: 'Arial';
+    --fontSize: 16px;
+    --inputSize: 2ch;
+}
+
 * {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -33,6 +39,21 @@ body{
     border-radius: 15px;
     cursor: pointer;
 }
+textarea {
+    width: 90%;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-family: var(--font);
+    font-size: var(--fontSize);
+}
+#setFontSize{
+    width: var(--inputSize);
+    max-width: 3ch;
+    text-align: center;
+
+}
 textarea , #previewcontent {
     position: absolute;
     width: 70%;
@@ -46,6 +67,23 @@ textarea , #previewcontent {
     resize: none;   
 }
 #previewcontent {
-   z-index: -1;
-   background-color: rgb(245, 245, 245);
+    z-index: -1;
+    background-color: rgb(245, 245, 245);
+}
+
+#previewcontent p{
+    font-family: var(--font);
+    font-size: var(--fontSize);
+}
+#previewcontent h1{
+    font-family: var(--font);
+    font-size: calc(var(--fontSize) + 20px);
+}
+#previewcontent h2{
+    font-family: var(--font);
+    font-size: calc(var(--fontSize) + 14px);
+}
+#previewcontent h3{
+    font-family: var(--font);
+    font-size: calc(var(--fontSize) + 10px);
 }

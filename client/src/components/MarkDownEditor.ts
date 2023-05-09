@@ -49,10 +49,19 @@ export class MarkDownEditor extends HTMLElement {
 					e.preventDefault();
 					this[elem.id]();
 				});
-			} else {
+			} else if (elem.tagName == "FORM") {
 				console.log(elem.firstElementChild);
 				elem.firstElementChild.addEventListener("change", (e) => {
-					this.heading(elem.firstElementChild);
+					e.preventDefault();
+					this[elem.firstElementChild.id](elem.firstElementChild);
+				});
+			} else if (elem.tagName == "INPUT") {
+				elem.addEventListener("keydown", (event: KeyboardEvent) => {
+					this.updateInputSize(elem);
+					if (event.key == "Enter") {
+						console.log(elem.id);
+						this[elem.id](elem);
+					}
 				});
 			}
 		}
@@ -194,6 +203,27 @@ export class MarkDownEditor extends HTMLElement {
 		}
 		substring = newLines.join("\n");
 		this.textarea.value = `${startString}${substring}${endString}`;
+	}
+	setFont(elem) {
+		let root = document.documentElement;
+		let id = elem[elem.selectedIndex].id;
+
+		console.log(id);
+		root.style.setProperty("--font", id);
+	}
+
+	setFontSize(elem) {
+		let root = document.documentElement;
+		console.log(elem);
+		const numInput = Number(elem.value);
+
+		root.style.setProperty("--fontSize", numInput + "px");
+	}
+
+	updateInputSize(elem) {
+		const root = document.documentElement;
+
+		root.style.setProperty("--inputSize", elem.value.length + 1 + "ch");
 	}
 }
 customElements.define("markdown-editor", MarkDownEditor);
