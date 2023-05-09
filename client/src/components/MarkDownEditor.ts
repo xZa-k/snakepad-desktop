@@ -95,10 +95,10 @@ export class MarkDownEditor extends HTMLElement {
 			this.output.innerHTML += "Preview Mode";
 			// Parse text into markdow
 			let rawText = this.textarea.value;
-			let markdown = marked.parse(rawText, { breaks: true })
-			this.output.innerHTML += markdown
-			this.textarea.readOnly = true
-			this.textarea.style.display = "none"
+			let markdown = marked.parse(rawText, { breaks: true });
+			this.output.innerHTML += markdown;
+			this.textarea.readOnly = true;
+			this.textarea.style.display = "none";
 		} else {
 			this.textarea.readOnly = false;
 			this.textarea.style.display = "block";
