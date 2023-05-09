@@ -11,12 +11,14 @@ Dependances:
 - deno
     - install deno make sure it's in your path environment variable
 - npm
+    - *works on node 16 and under (not 17)*
 
 *add intructions on how to set up for development*
 1. open the terminal
 2. run npm start
 3. go to http://localhost:8080/ on your browser
 
+CTRL + c in the terminal to stop running.
 
 ## Contributers
 
