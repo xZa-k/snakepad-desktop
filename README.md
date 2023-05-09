@@ -9,6 +9,7 @@ This project is a note taking web app for the Setapp coursework
 ## Development 
 Dependances:
 - deno
+    - install deno make sure it's in your path environment variable
 - npm
 
 *add intructions on how to set up for development*
