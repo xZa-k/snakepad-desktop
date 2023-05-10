@@ -1,10 +1,25 @@
+# *In development*
 # SnakePad 🐍
 
 ## Snake + Notes, what a wonderful creation.
 This project is a note taking web app for the Setapp coursework
 
-## As the user
--go to the website
+## Usage
+*not set up yet but it would be along the lines of this*
+- go to the website  
+*image_of_homepage.jpg*
+- login  
+*image_of_login.jpg*
+- open or create a note  
+*image_of_main_area.jpg*
+- start writing
+
+## Features
+- Buttons for markdown actions
+    - Bold
+    - Italics
+- File saving
+- *user accounts*
 
 ## Development 
 Dependances:
