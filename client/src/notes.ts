@@ -69,6 +69,7 @@ export class Workspace{
             let newTitle = this.textEditor.noteTitleHeader.textContent;
             this.textEditor.setAttribute("title", newTitle);
             this.getNoteById(this.selectedNote).title = newTitle;
+            updateUserByUsername("Z_akk_", this.notes);
         });
 
         // Will overwrite data.notes if stuff is saved, else keep the empty note
@@ -76,18 +77,18 @@ export class Workspace{
             this.selectedNote = this.notes[0].id;
 
             this.textEditor.setAttribute("title", this.getNoteById(this.selectedNote).title);
-    
-    
+
+
             this.fileExplorer = new FileExplorer();
             this.fileExplorer.setAttribute("data", JSON.stringify(this.data));
-            this.fileExplorer.addEventListener("notechange", (e: CustomEvent<NoteChange>) => this.saveNoteCallback(e, this));   
+            this.fileExplorer.addEventListener("notechange", (e: CustomEvent<NoteChange>) => this.saveNoteCallback(e, this));
             editorParent.appendChild(this.textEditor);
-            fileExplorerParent.appendChild(this.fileExplorer); 
+            fileExplorerParent.appendChild(this.fileExplorer);
         })
 
         setInterval(() => {
-
-        }, 30000) // 30 seconds
+            updateUserByUsername("Z_akk_", this.notes);
+        }, 1000) // 1 second
 
 
     }
@@ -102,14 +103,13 @@ export class Workspace{
                 // workspace.textEditor.noteTitle.textContent = note.title;
             }
         }
-        updateUserByUsername("Z_akk_", this.notes);
     }
 
     inputHandler(e: Event, workspace: Workspace) {
         e.preventDefault();
 
         let note = this.getNoteById(workspace.selectedNote);
-    
+
         note.title = workspace.textEditor.noteTitleHeader.textContent;
         note.text = workspace.textEditor.textarea.value;
         localStorage.setItem("workspace", JSON.stringify(workspace.data));
@@ -123,8 +123,7 @@ export class Workspace{
             this.data = new WorkspaceData();
             this.data.notes = noteData;
             this.textEditor.textarea.value = this.data.notes[0].text;
-            console.log(this);
-            
+
         } else {
             const workspaceString = localStorage.getItem("workspace");
             if (workspaceString) {
@@ -135,7 +134,7 @@ export class Workspace{
             }
         }
 
-        
+
     }
 
     getNoteById(noteid: string): Note {
