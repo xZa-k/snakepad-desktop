@@ -1,3 +1,59 @@
+
 ul {
     cursor: pointer;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: normal;
+    height: 100%;
+    padding: 10px;
+}
+
+/* file list */
+
+li {
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    color: #E6FAFC;
+}
+
+li:hover {
+    background-color: #515B3A;
+    box-sizing: border-box;
+    border-radius: 22px;
+    
+}
+
+/* General buttons */
+button {
+    margin: 4px 0;
+    padding: 5px 0px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: #E6FAFC;
+    border: none;
+    border-radius: 11px;
+    cursor: pointer;
+}
+
+/* new note button*/
+
+#new_note {
+    background-color: #3d562b;
+
+}
+#new_note:hover {
+    background-color: #1d2914;
+}
+
+/* delete button */
+#delete_note {
+    background-color: #8f1f80;
+}
+
+#delete_note:hover {
+    background-color: #630357;
 }
