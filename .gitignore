@@ -130,3 +130,5 @@ dist
 .pnp.*
 
 server/deno.lock
+
+test/venv
