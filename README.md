@@ -6,10 +6,14 @@ This project is a note taking web app for the Setapp coursework
 
 ## Usage
 *not set up yet but it would be along the lines of this*
-- go to the website  
-*image_of_homepage.jpg*
-- login  
-*image_of_login.jpg*
+- Go to the website
+
+  ![login-page](/Documentation/Images/login%20page.png)  
+
+- login or sign up  
+    *no sign up yet*
+- Put in your details  
+![loging-in](/Documentation/Images/details%20loging%20in.png) 
 - open or create a note  
 *image_of_main_area.jpg*
 - start writing
@@ -18,6 +22,7 @@ This project is a note taking web app for the Setapp coursework
 - Buttons for markdown actions
     - Bold
     - Italics
+    - *link doesn't work*
 - File saving
 - *user accounts*
 
@@ -28,6 +33,7 @@ Dependances:
 - npm
     - *works on node 16 and under (not 17)*
     - webpack
+    - express
 
 *add intructions on how to set up for development*
 1. open the terminal
@@ -49,3 +55,5 @@ CTRL + c in the terminal to stop running.
 
 
 ## License
+
+
