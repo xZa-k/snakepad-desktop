@@ -17,6 +17,7 @@ export class MarkDownEditor extends HTMLElement {
 	constructor() {
 		super();
 
+		// Create components dynamically
 		this.toggle = false;
 		this.setAttribute("toggle", "false");
 
@@ -37,11 +38,14 @@ export class MarkDownEditor extends HTMLElement {
 		this.output.id = "previewcontent";
 		this.container.append(this.output);
 
+
+		// Load the HTML template for the buttons
 		let template = document.querySelector("#buttons_template") as HTMLTemplateElement;
 		console.log(template);
 		let fragment = template.content.cloneNode(true) as DocumentFragment;
 		this.buttons = fragment.querySelector("#button_container") as HTMLDivElement;
 
+		// Assign onclick events by using the id to refer to the function
 		let children = this.buttons.children;
 		for (let elem of children) {
 			if (elem.tagName == "BUTTON") {
@@ -49,10 +53,18 @@ export class MarkDownEditor extends HTMLElement {
 					e.preventDefault();
 					this[elem.id]();
 				});
-			} else {
+			} else if (elem.tagName == "FORM") {
 				console.log(elem.firstElementChild);
 				elem.firstElementChild.addEventListener("change", (e) => {
-					this.heading(elem.firstElementChild);
+					e.preventDefault();
+					this[elem.firstElementChild.id](elem.firstElementChild);
+				});
+			} else if (elem.tagName == "INPUT") {
+				elem.addEventListener("input", (e) => {
+					this.updateInputSize(elem);
+				});
+				elem.addEventListener("focusout", (e) => {
+					this.setFontSize(elem);
 				});
 			}
 		}
@@ -194,6 +206,27 @@ export class MarkDownEditor extends HTMLElement {
 		}
 		substring = newLines.join("\n");
 		this.textarea.value = `${startString}${substring}${endString}`;
+	}
+	setFont(elem) {
+		let root = document.documentElement;
+		let id = elem[elem.selectedIndex].id;
+
+		console.log(id);
+		root.style.setProperty("--font", id);
+	}
+
+	setFontSize(elem) {
+		let root = document.documentElement;
+		console.log(elem);
+		const numInput = Number(elem.value);
+
+		root.style.setProperty("--fontSize", numInput + "px");
+	}
+
+	updateInputSize(elem) {
+		const root = document.documentElement;
+
+		root.style.setProperty("--inputSize", elem.value.length + 1 + "ch");
 	}
 }
 customElements.define("markdown-editor", MarkDownEditor);

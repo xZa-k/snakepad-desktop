@@ -13,8 +13,9 @@ app.get("/api/huh", (req: any, res: any) => {
   res.send("Hello wurldsss!");
 });
 
-
+// API path for getting a user
 app.get("/api/getUserByName/:username", (req: express.Request, res: express.Response) => {
+  // Tries to get user or returns an error
   try {
     let user = getUserByUsername(req.params.username);
     res.send(user);
@@ -23,11 +24,12 @@ app.get("/api/getUserByName/:username", (req: express.Request, res: express.Resp
   }
 });
 
+// API path for updating user
 app.post("/api/updateUserByName/:username", express.json(), (req: express.Request, res: express.Response) => {
   updateUser(req.params.username, req.body);
   console.log("updating user");
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Listening on port ${port}`);
 });

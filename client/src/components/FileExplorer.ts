@@ -11,13 +11,14 @@ export class FileExplorer extends HTMLElement {
     fileList: HTMLUListElement;
     deleteNoteButton: HTMLButtonElement;
     newNoteButton: HTMLButtonElement;
-    // buttonCallback: (this: HTMLLIElement, noteid: string) => any;
 
 
 	constructor() {
 		super();
 
         this.workspaceData = new WorkspaceData();
+
+        // Dynamically create elements
 
         this.container = document.createElement("div");
 
@@ -31,6 +32,7 @@ export class FileExplorer extends HTMLElement {
             for (let i = 0; i < this.workspaceData.notes.length; i++) {
                 const note = this.workspaceData.notes[i];
                 
+                // On deleted note, go back to the first note
                 if (note.id == this.selectedNote) {
                     this.workspaceData.notes.splice(i, 1);
                     this.setAttribute("data", JSON.stringify(this.workspaceData));
@@ -39,9 +41,6 @@ export class FileExplorer extends HTMLElement {
                     break;
                 }
             }
-            
-
-
         });
         this.container.appendChild(this.deleteNoteButton);
 
@@ -49,6 +48,7 @@ export class FileExplorer extends HTMLElement {
         this.newNoteButton.id = "new_note";
         this.newNoteButton.textContent = "New";
         this.newNoteButton.addEventListener("click", (e) => {
+            // Creates a blank new note and appends it to the note list
             let newNote = new Note("");
             this.workspaceData.notes.push(newNote);
             this.setAttribute("data", JSON.stringify(this.workspaceData));
@@ -72,6 +72,7 @@ export class FileExplorer extends HTMLElement {
 	}
 
 	attributeChangedCallback(name, oldValue: string, newValue: string) {
+        // Update data when attribute is changed
         if (name == "data") {
             this.workspaceData = JSON.parse(newValue);
             this.updateFileList();
@@ -82,6 +83,7 @@ export class FileExplorer extends HTMLElement {
 		return ["data"];
 	}
 
+    // Send an event that the selected note has changed, for other components to use
     noteChange(note?: Note) {
         this.dispatchEvent(new CustomEvent<NoteChange>("notechange", {
             detail: {noteid: note.id},
@@ -90,6 +92,7 @@ export class FileExplorer extends HTMLElement {
         this.selectedNote = note.id;
     }
 
+    // Creates list elements based on the workspace data
     updateFileList() {
         this.fileList.innerHTML = "";
         for (const note of this.workspaceData.notes) {

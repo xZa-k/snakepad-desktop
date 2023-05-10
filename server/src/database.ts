@@ -19,18 +19,19 @@ db.execute(`
 
 
 
-
+// Creates a user given a username and the notedata
 export function createUser(username: string, noteData: NoteData[]) {
     db.query(`
     INSERT INTO user (username, note_data) VALUES (?, ?)
     `, [username, JSON.stringify(noteData)]);
 }
 
+// Gets a user and their data from a username
 export function getUserByUsername(usernameParam: string): User {
     const [id, username, noteData] = db.prepareQuery<[number, string, string]>(`
     SELECT id, username, note_data FROM user WHERE username LIKE ?
     `).first([usernameParam]) ?? [undefined, undefined, undefined];
-    
+
     if (!id || !username || !noteData) {
         throw new Error("No user found");
     }
@@ -42,6 +43,7 @@ export function getUserByUsername(usernameParam: string): User {
     }
 }
 
+// Updates a users notedata
 export function updateUser(username: string, noteData: NoteData[]) {
     console.log(username);
     console.log(noteData);
