@@ -56,12 +56,11 @@ export class MarkDownEditor extends HTMLElement {
 					this[elem.firstElementChild.id](elem.firstElementChild);
 				});
 			} else if (elem.tagName == "INPUT") {
-				elem.addEventListener("keydown", (event: KeyboardEvent) => {
+				elem.addEventListener("input", (e) => {
 					this.updateInputSize(elem);
-					if (event.key == "Enter") {
-						console.log(elem.id);
-						this[elem.id](elem);
-					}
+				});
+				elem.addEventListener("focusout", (e) => {
+					this.setFontSize(elem);
 				});
 			}
 		}
