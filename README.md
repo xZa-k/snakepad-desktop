@@ -22,8 +22,13 @@ This project is a note taking web app for the Setapp coursework
 - Buttons for markdown actions
     - Bold
     - Italics
-    - *link doesn't work*
-- File saving
+    - Heading Types
+    - Numbered and bullet lists 
+    - *link doesn't work to other notes but for websites it does*
+- change font Size
+- toggle preview button
+- Auto File saving
+- File name changing
 - *user accounts*
 
 ## Development 
@@ -31,7 +36,7 @@ Dependances:
 - deno
     - install deno make sure it's in your path environment variable
 - npm
-    - *works on node 16 and under (not 17)*
+    - *works on node 12 - 16 (not 17)*
     - webpack
     - express
 
