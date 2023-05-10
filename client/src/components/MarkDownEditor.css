@@ -12,6 +12,17 @@ body{
     height: 100%;
 }
 
+#setFontSize{
+    background-color: #6BA368;
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 20px;
+    width: var(--inputSize);
+    max-width: 3ch;
+    text-align: center;
+}
+
 #note_title_header {
     color: white;
     text-align: center;
@@ -47,12 +58,6 @@ textarea {
     display: block;
     font-family: var(--font);
     font-size: var(--fontSize);
-}
-#setFontSize{
-    width: var(--inputSize);
-    max-width: 3ch;
-    text-align: center;
-
 }
 textarea , #previewcontent {
     position: absolute;
