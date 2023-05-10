@@ -23,7 +23,7 @@ Dependances:
 
 CTRL + c in the terminal to stop running.
 
-## Contributers
+## Contributors
 
 - Mark Chittenden - https://github.com/mark-chit
 - Benjamin Kile - https://github.com/BenjaminKile
