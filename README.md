@@ -30,6 +30,7 @@ CTRL + c in the terminal to stop running.
 - Manoj Chandar - https://github.com/ManojC0
 - Stuart Dann - https://github.com/Stuart-Dann
 - Zak Body - https://github.com/xZa-k
+- Pablo Bejar - https://github.com/PabloBeJ
 
 
 ## License
