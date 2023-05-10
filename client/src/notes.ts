@@ -14,7 +14,7 @@ export class Note {
     }
 }
 
-
+// Object just for the data for easy serialization
 export class WorkspaceData {
     public notes: Note[];
 
@@ -23,6 +23,7 @@ export class WorkspaceData {
     }
 }
 
+// API functions
 export async function getUserByUsername(username: string): Promise<User> {
     let resp = await fetch(`/api/getUserByName/${username}`, {
         method: "GET",
@@ -42,6 +43,8 @@ export async function updateUserByUsername(username: string, userData: NoteData[
     console.log(resp);
 }
 
+
+// Main entry point, workspace contains notes and loads editor related components
 export class Workspace{
     public textEditor: MarkDownEditor;
     public data: WorkspaceData;
@@ -54,16 +57,11 @@ export class Workspace{
         this.data = new WorkspaceData();
         this.notes = [new Note("")];
 
-        // getUserByUsername("Z_akk_").then((user) => {
-        //     console.log(user);
-        //     // updateUserByUsername("Z_akk_", this.notes);
-        // })
-
 
         this.textEditor = new MarkDownEditor();
 
 
-
+        // Updates the text content and titles on changes
         this.textEditor.addEventListener("input", (e) => this.inputHandler(e, this));
         this.textEditor.noteTitleHeader.addEventListener("focusout", (e) => {
             let newTitle = this.textEditor.noteTitleHeader.textContent;
@@ -85,13 +83,10 @@ export class Workspace{
             fileExplorerParent.appendChild(this.fileExplorer); 
         })
 
-        setInterval(() => {
-
-        }, 30000) // 30 seconds
-
 
     }
 
+    // Saves the notes by using the notechange event to know which note it has selected
     saveNoteCallback(e: CustomEvent<NoteChange>, workspace: Workspace) {
         let noteid = e.detail.noteid;
         workspace.data = workspace.fileExplorer.workspaceData;
@@ -99,7 +94,6 @@ export class Workspace{
             if (note.id == noteid) {
                 workspace.selectedNote = noteid;
                 workspace.textEditor.textarea.value = note.text;
-                // workspace.textEditor.noteTitle.textContent = note.title;
             }
         }
         updateUserByUsername("Z_akk_", this.notes);
