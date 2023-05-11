@@ -58,6 +58,7 @@ textarea {
     display: block;
     font-family: var(--font);
     font-size: var(--fontSize);
+    z-index: 1;
 }
 textarea , #previewcontent {
     position: absolute;
@@ -72,7 +73,7 @@ textarea , #previewcontent {
     resize: none;   
 }
 #previewcontent {
-    z-index: -1;
+    z-index: 0;
     background-color: rgb(245, 245, 245);
 }
 
