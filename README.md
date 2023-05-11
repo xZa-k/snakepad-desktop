@@ -1,3 +1,5 @@
+_older version of the repo that has the homepage html to show that it has been designed_
+
 # SnakePad 🐍
 
 ## Snake + Notes, what a wonderful creation.
