@@ -59,7 +59,9 @@ _not set up yet but it would be along the lines of this_
 3. Run `npm start`
 4. Go to http://localhost:8080/ on your browser
 
-### Testing:
+CTRL + c in the terminal to stop running.
+
+## Testing:
 
 Install python (recommended 3.7) and use pip to install helim
 `pip install helium` ideally in a venv.
@@ -69,12 +71,11 @@ Run `test/all.py` with python i.e. `python3 all.py`
 
 It will give 3 test results outputted in the terminal.
 
-#### The tests are:
+### The tests are:
 - Testing if using hashtags for headers creates a h1 tag in the preview
 - Testing if when random text is written and you switch between notes the text is still there
 - Testing if creating a new note works (deletes the newly created note after)
 
-CTRL + c in the terminal to stop running.
 
 # Contributors
 
