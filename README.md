@@ -32,7 +32,7 @@ This project is a note taking web app for the Setapp coursework
 - *user accounts*
 
 ## Development 
-Dependances:
+### Dependancies:
 - deno
     - install deno make sure it's in your path environment variable
 - npm
@@ -46,6 +46,15 @@ Dependances:
     to install dependancies *might want to check this*
 3. run npm start
 4. go to http://localhost:8080/ on your browser
+
+### Testing:
+Install python (recommended 3.7) and use pip to install helim
+`pip install helium` ideally in a venv.
+Firefox is the default browser it uses to test. Either make sure FireFox is installed or change the first line in `all.py` to `start_chrome()`.
+
+Run `test/all.py` with python i.e. `python3 all.py`
+
+It will give 3 test results outputted in the terminal.
 
 CTRL + c in the terminal to stop running.
 
