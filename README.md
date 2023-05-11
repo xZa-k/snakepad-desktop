@@ -6,7 +6,7 @@
 
 This project is a snake themed note taking web app.
 
-## Usage
+# Usage
 
 _not set up yet but it would be along the lines of this_
 
@@ -14,34 +14,37 @@ _not set up yet but it would be along the lines of this_
 
   ![login-page](/Documentation/Images/login%20page.png)
 
-- login or sign up  
+- Login or sign up  
    _no sign up yet_
 - Put in your details  
   ![loging-in](/Documentation/Images/details%20loging%20in.png)
 
-- open or create a note
+- Open or create a note
   ![loging-in](/Documentation/Images/Note%20taking%20page.png)
 - Start writing
 
 ## Features
 
-- When using these features make sure that the word you are styling or words does not have a space betwen the starting letter or end letter and the symbol e.g. This: **Test** not: ** Test** or **Test **. This rules is not nessasary for styling that doesnt surround the words e.g. Heading: # Test but these need to be on a new line or they may not function as intended.\
+- When using these features make sure that the word you are styling or words does not have a space betwen the starting letter or end letter and the symbol e.g. This: **Test** not: ** Test** or **Test **. This rules is not nessasary for styling that doesnt surround the words e.g. Heading: # Test but these need to be on a new line or they may not function as intended.
 
 - Buttons for markdown actions
   - Bold
   - Italics
   - Heading Types
   - Numbered and bullet lists
-  - _link doesn't work to other notes but for websites it does_
-- change font Size
-- toggle preview button
+  - _link doesn't work to other notes but for websites it does it needs 'https://'_   
+- Change font Size
+- Toggle preview button
 - Auto File saving
 - File name changing
 - _user accounts_
 
-## Development
+# Development
+## Documentation
+- Here is the link to the [Client](/Documentation/Client.md) side of the documentation  
+- Here is the link to the [Server](/Documentation/Server.md) side of the documentation
 
-### Dependancies:
+## Dependancies:
 
 - deno
   - install deno make sure it's in your path environment variable
@@ -50,13 +53,11 @@ _not set up yet but it would be along the lines of this_
   - webpack
   - express
 
-_add intructions on how to set up for development_
-
-1. open the terminal
-2. run npm i
-   to install dependancies _might want to check this_
-3. run npm start
-4. go to http://localhost:8080/ on your browser
+## Set Up
+1. Open the terminal
+2. Run `npm i`
+3. Run `npm start`
+4. Go to http://localhost:8080/ on your browser
 
 ### Testing:
 
@@ -75,7 +76,7 @@ It will give 3 test results outputted in the terminal.
 
 CTRL + c in the terminal to stop running.
 
-## Contributors
+# Contributors
 
 - Mark Chittenden - https://github.com/mark-chit
 - Benjamin Kile - https://github.com/BenjaminKile
@@ -83,5 +84,3 @@ CTRL + c in the terminal to stop running.
 - Stuart Dann - https://github.com/Stuart-Dann
 - Zak Body - https://github.com/xZa-k
 - Pablo Bejar - https://github.com/PabloBeJ
-
-## License

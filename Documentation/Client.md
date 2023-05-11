@@ -1,18 +1,6 @@
-# *In development*
+[Back-To-README](/README.md)
 
-*This will be the parent page for the sections in the client side  
-might not look like this precisely, just for structuring*
-
-
-- src/components
-    - fileExplorer.css
-    - fileExplorer.ts
-    - MarkDownEditor.css
-    - MarkDownEditor.js
-- index.html
-- index.js
-- main.scss
-- notes.ts
+# Client
 
 ## Note.ts
 `notes.ts` contains most of the logic for the application. It intialises the HTML components dynamically and is used for communication between the components and the main workspace object, through a mixture of events and attribute callbacks.
@@ -37,3 +25,5 @@ This is the editor as well as the buttons for interacting with some of the markd
 
 ### FileExplorer
 File explorer sends a `NoteChange` event when a note item is selected. Currently WorkspaceData is given as an attribute `data` so that the component is aware of all the notes, however this will change in future iterations removing the text data and instead only having the title and note id.
+
+[Back-To-README](/README.md)
