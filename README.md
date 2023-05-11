@@ -68,6 +68,11 @@ Run `test/all.py` with python i.e. `python3 all.py`
 
 It will give 3 test results outputted in the terminal.
 
+#### The tests are:
+- Testing if using hashtags for headers creates a h1 tag in the preview
+- Testing if when random text is written and you switch between notes the text is still there
+- Testing if creating a new note works (deletes the newly created note after)
+
 CTRL + c in the terminal to stop running.
 
 ## Contributors
