@@ -38,7 +38,6 @@ export class MarkDownEditor extends HTMLElement {
 		this.output.id = "previewcontent";
 		this.container.append(this.output);
 
-
 		// Load the HTML template for the buttons
 		let template = document.querySelector("#buttons_template") as HTMLTemplateElement;
 		console.log(template);
@@ -140,7 +139,7 @@ export class MarkDownEditor extends HTMLElement {
 		let startString = textContent.substring(0, this.posCaretStart);
 		let endString = textContent.substring(this.posCaretEnd);
 		let substring = textContent.substring(this.posCaretStart, this.posCaretEnd);
-		this.textarea.value = `${startString}*${substring}*${endString}`;
+		this.textarea.value = `${startString}_${substring}_${endString}`;
 	}
 
 	link() {
